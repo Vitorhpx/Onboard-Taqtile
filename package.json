@@ -13,11 +13,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "gatsby": "^2.4.1",
+    "gatsby": "^2.4.2",
+    "gatsby-plugin-typescript": "^2.0.13",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "typescript": "^3.4.5"
   },
   "devDependencies": {
+    "@types/react": "^16.8.15",
+    "@types/react-dom": "^16.8.4",
     "prettier": "^1.17.0"
   },
   "repository": {
