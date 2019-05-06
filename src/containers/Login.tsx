@@ -11,6 +11,14 @@ class LoginButton extends React.Component{
     }
 }
 
+class LoginTitle extends React.Component{
+    render(){
+        return(
+            <h1 className = {"LoginTitle"}>{this.props.text}</h1>
+        );
+    }
+}
+
 class Form extends React.Component{
     render(){
         return(
@@ -23,8 +31,9 @@ export class Login extends React.Component{
     render(){
         return(
             <div class ="Login">
-            <h1>Bem Vindo a TaqTile</h1>
+            
             <form method="post">
+              <LoginTitle text = "Bem vindo à TaqTile"/>
               <Form type="text" placeholder="Login"/>
               <Form type="password" name="p" placeholder="Password"/>
               <LoginButton type = {"submit"} text = {"Login"}/>
