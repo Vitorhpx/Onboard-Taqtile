@@ -19,14 +19,13 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
+};
+
+
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,700');
 
 .root{
     text-align: center;
-}
-
-h1{
-    padding: 1rem;
 }
 
 .Login{
@@ -39,16 +38,28 @@ h1{
     text-align: center;
     width: 30%;
     padding: 2rem;
-    line-height: 2rem;
+    line-height: 3rem;
+    font-family: 'Dosis';
 }
 
 .Form{
     text-align: center;
     width: 90%;
+    height: 1.5 rem;
+    border-radius: 3px;
+    padding: 0.5rem;
 }
 
 .LoginButton {
-    background-color: rgb(245, 245, 245);
-    width: 50%;
+    background-color: #6f36b7;
+    color: white;
+    width: 35%;
     height: 2.3rem;
+    border-radius: 5px;
 }   
+
+.LoginTitle{
+    font-size: 2rem;
+    padding: 1rem;
+    color: #6f36b7;
+}
