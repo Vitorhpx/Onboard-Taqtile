@@ -59,16 +59,14 @@ export class Login extends React.Component{
     render(){
         const {isEmailValid,isPasswordValid,submitted} = this.state;
         return(
-            <div className ="Login">
-            <form method="post" onSubmit = {this.handleSubmit} noValidate>
-              <h1 className = {"LoginTitle"}>Bem vindo à TaqTile</h1>
-              <input type={"text"} className = {"FormInput"} name = {"email"} placeholder={"Login"} onChange={this.handleChange} required />
-              {(submitted && !isEmailValid) && <span className='error'>"Email Inválido "</span>}
-              <input type={"password"} className = {"FormInput"} name = {"password" } placeholder={"Senha"} onChange={this.handleChange} required />
-              {(submitted && !isPasswordValid) && <span className='error'>"Sua senha deve conter no mínimo um digito e um caractere alfanumérico, além de ser maior que 7 digitos"</span>}
-              <button type = {"submit"} className = {"LoginButton"}>Fazer Login</button>
+            <form method = "post" onSubmit = {this.handleSubmit} noValidate className = "Login">
+              <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
+              <input type = "text" className = "FormInput" name = "email" placeholder = "Login" onChange = {this.handleChange} required />
+              {(submitted && !isEmailValid) && <span className = 'Error'>Email Inválido</span>}
+              <input type = "password" className = "FormInput" name = "password" placeholder = "Senha" onChange = {this.handleChange} required />
+              {(submitted && !isPasswordValid) && <span className = 'Error'>Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito</span>}
+              <button type = "submit" className = "LoginButton">Fazer Login</button>
               </form>
-          </div>
         );
-    }
-}
+    };
+};
