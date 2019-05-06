@@ -4,7 +4,7 @@ import { Login } from '../containers/Login';
 import "../styles/styles.css";
 
 export default () => 
-                <div className = {"root"}>
+                <div className = "root">
                     <Login/>
                 </div>;
 
