@@ -44,7 +44,9 @@ export class Login extends React.Component<LoginProps, LoginState> {
             submitted: true,
         }) ;
         console.log(this.state);
-        mutateFunction();
+        if(this.state.isEmailValid && this.state.isPasswordValid){
+          mutateFunction();
+        }
       }
 
       handleSetEmail = (emailField) => {
