@@ -4,6 +4,7 @@ import { Validator } from '../utils/validator';
 interface LoginProps {
     canShowError: boolean
     setPassword: Function
+    setValid: Function
 }
 
 interface LoginState {
@@ -23,10 +24,12 @@ export class PasswordField extends React.Component<LoginProps, LoginState> {
       handlePasswordChange = (event) => {
         event.preventDefault();
         const { value } = event.target;
+        const isValid = Validator.isPassword(value);
         this.setState({
-          isPasswordValid: Validator.isPassword(value),
+          isPasswordValid: isValid,
           }) ;
           this.props.setPassword(value);
+          this.props.setValid(isValid);
       }
 
     render(){

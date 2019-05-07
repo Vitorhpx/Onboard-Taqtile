@@ -3,6 +3,8 @@ import { Validator } from '../utils/validator';
 
 interface LoginProps {
     canShowError: boolean
+    setEmail: Function
+    setValid: Function
 }
 
 interface LoginState {
@@ -22,9 +24,12 @@ export class EmailField extends React.Component<LoginProps, LoginState> {
       handleEmailChange = (event) => {
         event.preventDefault();
         const { value } = event.target;
+        const isValid = Validator.isEmail(value);
         this.setState({
-          isEmailValid: Validator.isEmail(value),
+          isEmailValid: isValid,
           }) ;
+        this.props.setEmail(value);
+        this.props.setValid(isValid);
       }
 
     render(){
