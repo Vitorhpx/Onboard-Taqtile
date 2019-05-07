@@ -13,6 +13,8 @@ interface LoginState {
   submitted: boolean;
   email: string;
   password: string;
+  isEmailValid: boolean;
+  isPasswordValid: boolean;
 }
 
 const LOGIN_MUTATION = gql`
@@ -29,7 +31,9 @@ export class Login extends React.Component<LoginProps, LoginState> {
         this.state = {
           submitted: false,
           email: "",
-          password:""
+          password:"",
+          isEmailValid: false,
+          isPasswordValid: false
         };
       }
 
@@ -43,15 +47,27 @@ export class Login extends React.Component<LoginProps, LoginState> {
         mutateFunction();
       }
 
-      handleEmailChange = (emailField) => {
+      handleSetEmail = (emailField) => {
         this.setState({
           email: emailField,
+        }) ;
+      }
+
+      handleEmailSetValid = (emailValidity) => {
+        this.setState({
+          isEmailValid: emailValidity,
         }) ;
       }
 
       handlePasswordChange = (passwordField) => {
         this.setState({
           password: passwordField,
+        }) ;
+      }
+
+      handlePasswordSetValid = (passwordValidity) => {
+        this.setState({
+          isPasswordValid: passwordValidity,
         }) ;
       }
 
@@ -65,8 +81,8 @@ export class Login extends React.Component<LoginProps, LoginState> {
                 mutation => (
             <form method = "post" onSubmit = {(event) => {this.handleSubmit(mutation, event)}} noValidate className = "Login">
               <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
-              <EmailField canShowError={submitted} setEmail={this.handleEmailChange}/>
-              <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange}/>
+              <EmailField canShowError={submitted} setEmail={this.handleSetEmail} setValid = {this.handleEmailSetValid}/>
+              <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange} setValid = {this.handlePasswordSetValid}/>
               <button type = "submit" className = "LoginButton">Fazer Login</button>
             </form>
             )
