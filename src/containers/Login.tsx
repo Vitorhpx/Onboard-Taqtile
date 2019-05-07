@@ -32,13 +32,25 @@ export class Login extends React.Component<LoginProps, LoginState> {
         console.log(this.state);
       }
 
+      handleEmailChange = (emailField) => {
+        this.setState({
+          email: emailField,
+        }) ;
+      }
+
+      handlePasswordChange = (passwordField) => {
+        this.setState({
+          password: passwordField,
+        }) ;
+      }
+
     render(){
         const {submitted} = this.state;
         return(
             <form method = "post" onSubmit = {this.handleSubmit} noValidate className = "Login">
               <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
-              <EmailField canShowError={submitted}/>
-              <PasswordField canShowError={submitted}/>
+              <EmailField canShowError={submitted} setEmail={this.handleEmailChange}/>
+              <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange}/>
               <button type = "submit" className = "LoginButton">Fazer Login</button>
             </form>
         );
