@@ -3,6 +3,8 @@ import TextField from 'material-ui/TextField';
 import { Validator } from '../utils/validator';
 import { EmailField } from '../components/email-field';
 import { PasswordField } from '../components/password-field';
+import {gql} from "apollo-boost";
+import { Mutation } from "react-apollo";
 
 interface LoginProps {
 }
@@ -12,6 +14,19 @@ interface LoginState {
   email: string;
   password: string;
 }
+
+const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    Login(data: {email: $email, password: $password, rememberMe: true}) {
+      user {
+        id
+        name
+        role
+      }
+      token
+    }
+  }
+`
 
 export class Login extends React.Component<LoginProps, LoginState> {
     constructor(props) {
@@ -51,9 +66,19 @@ export class Login extends React.Component<LoginProps, LoginState> {
               <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
               <EmailField canShowError={submitted} setEmail={this.handleEmailChange}/>
               <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange}/>
+              <Mutation
+              mutation = {LOGIN_MUTATION}
+              variables = {{"email":this.state.email,"password":this.state.password}}>
+              {
+                mutation => (
+                  <button onClick = {mutation} className = "LoginButton">Fazer Login</button>
+                )
+              }
+              </Mutation>
               <button type = "submit" className = "LoginButton">Fazer Login</button>
             </form>
         );
-    };
+    }
+;
 };
 
