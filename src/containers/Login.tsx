@@ -9,6 +9,8 @@ interface LoginProps {
 
 interface LoginState {
   submitted: boolean;
+  email: string;
+  password: string;
 }
 
 export class Login extends React.Component<LoginProps, LoginState> {
@@ -16,17 +18,20 @@ export class Login extends React.Component<LoginProps, LoginState> {
         super(props);
         this.state = {
           submitted: false,
+          email: "",
+          password:""
         };
-      }   
+      }
 
       handleSubmit = (event) => {
         event.preventDefault();
+        const { name, value } = event.target;
         this.setState({
             submitted: true,
         }) ;
         console.log(this.state);
       }
-      
+
     render(){
         const {submitted} = this.state;
         return(
