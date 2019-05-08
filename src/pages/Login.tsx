@@ -6,6 +6,7 @@ import { PasswordField } from '../components/password-field';
 import {gql} from "apollo-boost";
 import { Mutation, MutationResult } from "react-apollo";
 import { Redirect } from 'react-router-dom';
+import {AUTH_TOKEN} from "../constants"
 
 interface LoginProps {
 }
@@ -102,7 +103,7 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
     handleCompleted =  data => {
       const {token} = data.Login;
-      localStorage.setItem('token', token);
+      localStorage.setItem(AUTH_TOKEN, token);
       this.setState({
         redirect: true,
       })
