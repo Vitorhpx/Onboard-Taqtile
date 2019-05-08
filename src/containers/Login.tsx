@@ -39,48 +39,6 @@ export class Login extends React.Component<LoginProps, LoginState> {
         };
       }
 
-      handleSubmit = async (mutateFunction : Function, event) => {
-        event.preventDefault();
-        const { name, value } = event.target;
-        this.setState({
-            submitted: true,
-        }) ;
-        console.log(this.state);
-        /*O password não precisa ser válido para testar o token do admin*/
-        if(this.state.isEmailValid /*&& this.state.isPasswordValid*/){
-          await mutateFunction();
-        }
-      }
-
-      handleSetEmail = (emailField) => {
-        this.setState({
-          email: emailField,
-        }) ;
-      }
-
-      handleEmailSetValid = (emailValidity) => {
-        this.setState({
-          isEmailValid: emailValidity,
-        }) ;
-      }
-
-      handlePasswordChange = (passwordField) => {
-        this.setState({
-          password: passwordField,
-        }) ;
-      }
-
-      handlePasswordSetValid = (passwordValidity) => {
-        this.setState({
-          isPasswordValid: passwordValidity,
-        }) ;
-      }
-
-      _confirm = async data => {
-        const {token} = data.Login;
-        localStorage.setItem('token', token);
-      }
-
     render(){
         const {submitted} = this.state;
         return(
@@ -100,6 +58,47 @@ export class Login extends React.Component<LoginProps, LoginState> {
                 )}
           </Mutation>
         );
+    }
+    handleSubmit = async (mutateFunction : Function, event) => {
+      event.preventDefault();
+      const { name, value } = event.target;
+      this.setState({
+          submitted: true,
+      }) ;
+      console.log(this.state);
+      /*O password não precisa ser válido para testar o token do admin*/
+      if(this.state.isEmailValid /*&& this.state.isPasswordValid*/){
+        await mutateFunction();
+      }
+    }
+
+    handleSetEmail = (emailField) => {
+      this.setState({
+        email: emailField,
+      }) ;
+    }
+
+    handleEmailSetValid = (emailValidity) => {
+      this.setState({
+        isEmailValid: emailValidity,
+      }) ;
+    }
+
+    handlePasswordChange = (passwordField) => {
+      this.setState({
+        password: passwordField,
+      }) ;
+    }
+
+    handlePasswordSetValid = (passwordValidity) => {
+      this.setState({
+        isPasswordValid: passwordValidity,
+      }) ;
+    }
+
+    _confirm = async data => {
+      const {token} = data.Login;
+      localStorage.setItem('token', token);
     }
 ;
 };
