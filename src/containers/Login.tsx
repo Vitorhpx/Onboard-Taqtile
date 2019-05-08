@@ -46,6 +46,7 @@ export class Login extends React.Component<LoginProps, LoginState> {
             submitted: true,
         }) ;
         console.log(this.state);
+        /*O password não precisa ser válido para testar o token do admin*/
         if(this.state.isEmailValid /*&& this.state.isPasswordValid*/){
           await mutateFunction();
         }
@@ -91,8 +92,8 @@ export class Login extends React.Component<LoginProps, LoginState> {
                 (mutation, result: MutationResult) => (
             <form method = "post" onSubmit = {(event) => {this.handleSubmit(mutation, event)}} noValidate className = "Login">
               <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
-              <EmailField canShowError={submitted} setEmail={this.handleSetEmail} setValid = {this.handleEmailSetValid}/>
-              <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange} setValid = {this.handlePasswordSetValid}/>
+              <EmailField canShowError = {submitted} setEmail = {this.handleSetEmail} setValid = {this.handleEmailSetValid}/>
+              <PasswordField canShowError = {submitted} setPassword = {this.handlePasswordChange} setValid = {this.handlePasswordSetValid}/>
               <button type = "submit" className = "LoginButton">Fazer Login</button>
               {result.error && <p className = "Error">{result.error.message}</p>}
             </form>
