@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
 
-interface LoginProps {
+interface passwordProps {
     canShowError: boolean
     setPassword: Function
     setValid: Function
 }
 
-interface LoginState {
+interface passwordState {
   Password: string;
   isPasswordValid: boolean;
 }
 
-export class PasswordField extends React.Component<LoginProps, LoginState> {
+export class PasswordField extends React.Component<passwordProps, passwordState> {
     constructor(props) {
         super(props);
         this.state = {

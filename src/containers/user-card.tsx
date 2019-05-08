@@ -17,8 +17,8 @@ export class UserCard extends React.Component<UserCardProps, UserCardState> {
     render(){
       return(
       <div className="UserCard">
-        <h4><b>{this.props.username}</b></h4>
-        <p>{this.props.email}</p>
+        <h4><b>User: {this.props.username}</b></h4>
+        <p>Email: {this.props.email}</p>
       </div>
     );
     }
