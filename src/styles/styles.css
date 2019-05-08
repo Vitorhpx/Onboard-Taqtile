@@ -9,8 +9,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -56,7 +56,12 @@ time, mark, audio, video {
     width: 35%;
     height: 2.3rem;
     border-radius: 5px;
-}   
+}
+
+button[disabled].LoginButton
+{
+  background-color: #9077b1;
+}
 
 .LoginTitle{
     font-size: 2rem;
@@ -69,4 +74,11 @@ time, mark, audio, video {
     width: 100%;
     font-size: 0.8rem;
     color: red;
+}
+
+.Loading{
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: rgb(0, 0, 0);
 }
