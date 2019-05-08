@@ -15,11 +15,9 @@ const client = new ApolloClient({
 export default () =>
               <Router>
                 <ApolloProvider client={client}>
-                  <div className = "root">
-                  </div>
                 <Route path="/" exact component={Login} />
                 <Route path="/UserList/" component={UserList} />
                 </ApolloProvider>
-                </Router>
+              </Router>
 
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { UserCard } from '../containers/user-card';
 
 interface UserListProps {
 }
@@ -12,6 +13,18 @@ export class UserList extends React.Component<UserListProps, UserListState> {
       }
 
     render(){
-        return(null);
+      return(
+        <div className="UserList">
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+          <UserCard username = "Vitor" email = "vitor.perles@gmail.com"></UserCard>
+        </div>
+      );
     }
 };
