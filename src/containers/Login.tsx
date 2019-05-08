@@ -4,7 +4,7 @@ import { Validator } from '../utils/validator';
 import { EmailField } from '../components/email-field';
 import { PasswordField } from '../components/password-field';
 import {gql} from "apollo-boost";
-import { Mutation } from "react-apollo";
+import { Mutation, MutationResult } from "react-apollo";
 
 interface LoginProps {
 }
@@ -86,16 +86,15 @@ export class Login extends React.Component<LoginProps, LoginState> {
           <Mutation
               mutation = {LOGIN_MUTATION}
               variables = {{"email":this.state.email,"password":this.state.password}}
-              onCompleted={errors => this._confirm(errors)}>
+              onCompleted={data => this._confirm(data)}>
               {
-                (mutation, { loading, error }) => (
+                (mutation, result: MutationResult) => (
             <form method = "post" onSubmit = {(event) => {this.handleSubmit(mutation, event)}} noValidate className = "Login">
               <h1 className = "LoginTitle">Bem vindo à TaqTile</h1>
               <EmailField canShowError={submitted} setEmail={this.handleSetEmail} setValid = {this.handleEmailSetValid}/>
               <PasswordField canShowError={submitted} setPassword={this.handlePasswordChange} setValid = {this.handlePasswordSetValid}/>
               <button type = "submit" className = "LoginButton">Fazer Login</button>
-              {loading && <p>Loading...</p>}
-              {error && <p>Erro!</p>}
+              {result.error && <p className = "Error">{result.error.message}</p>}
             </form>
                 )}
           </Mutation>
