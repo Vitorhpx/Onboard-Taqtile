@@ -56,7 +56,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
             onSubmit={event => {this.handleSubmit(event)
             }}
             noValidate
-            className="Login"
+            className="Form"
           >
             <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
             <Field
