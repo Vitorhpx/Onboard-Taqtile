@@ -69,7 +69,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               errorMessage="Id inválido"
             />
             <Field
-              canShowError={this.state.submitted && this.state.isCpfValid}
+              canShowError={this.state.submitted && !this.state.isCpfValid}
               setField={this.handleSetCpf}
               setValid={this.handleCpfSetValid}
               name="cpf"
@@ -78,7 +78,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               errorMessage="CPF inválido"
             />
             <Field
-              canShowError={this.state.submitted && this.state.isBirthDateValid}
+              canShowError={this.state.submitted && !this.state.isBirthDateValid}
               setField={this.handleSetBirthDate}
               setValid={this.handleBirthDateSetValid}
               name="birthDate"
@@ -96,13 +96,13 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               errorMessage="Email Inválido"
             />
             <Field
-              canShowError={this.state.submitted && this.state.isRoleValid}
+              canShowError={this.state.submitted && !this.state.isRoleValid}
               setField={this.handleSetRole}
               setValid={this.handleRoleSetValid}
               name="role"
               placeholder="Função"
               validation={Validator.isRole}
-              errorMessage="Função Inválida, deve ser User ou Admin"
+              errorMessage="Função Inválida, deve ser 'user' ou 'admin'"
             />
             <button
               type="submit"
