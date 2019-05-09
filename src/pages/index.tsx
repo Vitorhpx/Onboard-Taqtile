@@ -1,18 +1,18 @@
-import * as React from 'react';
-import { Layout } from '../layout';
-import { Link } from 'gatsby';
+import * as React from "react"
+import { Layout } from "../layout"
+import { Link } from "gatsby"
 
 export default class Home extends React.Component<any, any> {
-    constructor(props) {
-        super(props);
-      }
+  constructor(props) {
+    super(props)
+  }
 
-    render(){
-      return(
-        <Layout>
-          <h1> Home </h1>
-          <Link to={'/Login'}> Login </Link>
-        </Layout>
-      );
-    }
-};
+  render() {
+    return (
+      <Layout>
+        <h1> Home </h1>
+        <Link to={"/Login"}> Login </Link>
+      </Layout>
+    )
+  }
+}
