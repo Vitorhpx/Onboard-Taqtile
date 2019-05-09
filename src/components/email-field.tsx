@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
 
-interface LoginProps {
+interface EmailProps {
     canShowError: boolean
     setEmail: Function
     setValid: Function
 }
 
-interface LoginState {
+interface EmailState {
   email: string;
   isEmailValid: boolean;
 }
 
-export class EmailField extends React.Component<LoginProps, LoginState> {
+export class EmailField extends React.Component<EmailProps, EmailState> {
     constructor(props) {
         super(props);
         this.state = {
