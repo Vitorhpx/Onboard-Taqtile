@@ -9,7 +9,7 @@ import { navigate } from "gatsby"
 import { Field } from "../components/field"
 import { Validator } from "../utils/validator"
 
-interface LoginPageState {
+interface UserAddPageState {
   submitted: boolean
   errorMessage: string
   id: string
@@ -26,7 +26,7 @@ interface LoginPageState {
   isRoleValid: boolean
 }
 
-export default class LoginPage extends React.Component<any, LoginPageState> {
+export default class UserAddPage extends React.Component<any, UserAddPageState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -57,7 +57,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
             this.handleSubmit(event)
           }}
           noValidate
-          className="Form"
+          className="Login"
         >
           <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
           <Field
@@ -103,7 +103,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
             name="role"
             placeholder="Função"
             validation={Validator.isRole}
-            errorMessage="Função Inválida, deve ser 'user' ou 'admin'"
+            errorMessage="Função Inválida, deve ser 'user' ou 'admin"
           />
           <button type="submit" className="LoginButton">
             Fazer Login
