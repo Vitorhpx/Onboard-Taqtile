@@ -53,7 +53,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 this.handleSubmit(mutation, event)
               }}
               noValidate
-              className="Login"
+              className="Form"
             >
               <h1 className="LoginTitle">Bem vindo à Taqtile</h1>
               <EmailField
