@@ -1,12 +1,11 @@
 import * as React from 'react';
-import TextField from 'material-ui/TextField';
-import { Validator } from '../utils/validator';
 import { EmailField } from '../components/email-field';
 import { PasswordField } from '../components/password-field';
 import {gql} from "apollo-boost";
 import { Mutation, MutationResult } from "react-apollo";
-import { Redirect } from 'react-router-dom';
 import {AUTH_TOKEN} from "../constants"
+import { Layout } from '../layout';
+import { navigate } from "gatsby"
 
 interface LoginProps {
 }
@@ -18,7 +17,6 @@ interface LoginState {
   isEmailValid: boolean;
   isPasswordValid: boolean;
   errorMessage: string;
-  redirect: boolean;
 }
 
 const LOGIN_MUTATION = gql`
@@ -29,7 +27,7 @@ const LOGIN_MUTATION = gql`
   }
 `
 
-export class Login extends React.Component<LoginProps, LoginState> {
+export default class Login extends React.Component<LoginProps, LoginState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +36,6 @@ export class Login extends React.Component<LoginProps, LoginState> {
           password:"",
           isEmailValid: false,
           isPasswordValid: false,
-          redirect: false,
           errorMessage: ""
         };
       }
@@ -46,6 +43,7 @@ export class Login extends React.Component<LoginProps, LoginState> {
     render(){
         const {submitted} = this.state;
         return(
+          <Layout>
           <Mutation
               mutation = {LOGIN_MUTATION}
               variables = {{"email":this.state.email,"password":this.state.password}}
@@ -59,10 +57,10 @@ export class Login extends React.Component<LoginProps, LoginState> {
               <button type = "submit" className = "LoginButton" disabled = {result.loading}>Fazer Login</button>
               {result.error && <p className = "Error">{result.error.message}</p>}
               {result.loading && <p className = "Loading">Loading...</p>}
-              {this.state.redirect && <Redirect to='/UserList'></Redirect>}
             </form>
                 )}
           </Mutation>
+          </Layout>
         );
     }
     handleSubmit = async (mutateFunction : Function, event) => {
@@ -103,10 +101,8 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
     handleCompleted =  data => {
       const {token} = data.Login;
-      localStorage.setItem(AUTH_TOKEN, token);
-      this.setState({
-        redirect: true,
-      })
+      localStorage.setItem(AUTH_TOKEN, token)
+      navigate('/UserList')
     }
 ;
 };
