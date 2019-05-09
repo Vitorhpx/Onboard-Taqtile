@@ -11,7 +11,7 @@ export default class Home extends React.Component<any, any> {
     return (
       <Layout>
         <h1> Home </h1>
-        <Link to={"/Login"}> Login </Link>
+        <Link to={"/LoginPage"}> Login </Link>
       </Layout>
     )
   }
