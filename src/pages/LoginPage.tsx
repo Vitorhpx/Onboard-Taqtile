@@ -7,7 +7,7 @@ import { AUTH_TOKEN } from "../constants"
 import { Layout } from "../layout"
 import { navigate } from "gatsby"
 
-interface LoginState {
+interface LoginPageState {
   submitted: boolean
   email: string
   password: string
@@ -24,7 +24,7 @@ const LOGIN_MUTATION = gql`
   }
 `
 
-export default class Login extends React.Component<any, LoginState> {
+export default class LoginPage extends React.Component<any, LoginPageState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -120,6 +120,6 @@ export default class Login extends React.Component<any, LoginState> {
   handleCompleted = data => {
     const { token } = data.Login
     localStorage.setItem(AUTH_TOKEN, token)
-    navigate("/UserList")
+    navigate("/UserListPage")
   }
 }

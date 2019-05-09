@@ -27,7 +27,7 @@ type Response = {
   Users: Users
 }
 
-export default class UserList extends React.Component<any, any> {
+export default class UserListPage extends React.Component<any, any> {
   constructor(props) {
     super(props)
   }
