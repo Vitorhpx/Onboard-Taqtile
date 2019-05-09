@@ -107,3 +107,10 @@ button[disabled].LoginButton
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.PageButton {
+  background-color: #7d629e;
+  color: white;
+  width: 50%;
+  height: 2.3rem;
+  border-radius: 5px;
+}
