@@ -82,3 +82,28 @@ button[disabled].LoginButton
   font-size: 0.9rem;
   color: rgb(0, 0, 0);
 }
+.UserList{
+  float: center;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: center;
+  align-items: baseline;
+  text-align: left;
+  line-height: 2rem;
+}
+
+.UserCard {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 2px 16px;
+  border-radius: 5px;
+  height: 50% ;
+  width: 100%;
+}
+
+.UserCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
