@@ -4,7 +4,7 @@ import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
-import {PAGEOFFSET} from "../constants"
+import { PAGEOFFSET } from "../constants"
 
 interface UserListPageState {
   limit: number
@@ -18,6 +18,7 @@ const USERS_QUERY = gql`
       nodes {
         name
         email
+        id
       }
     }
   }
@@ -25,6 +26,7 @@ const USERS_QUERY = gql`
 type User = {
   name: string
   email: string
+  id: string
 }
 type Users = {
   nodes: User[]
@@ -57,9 +59,15 @@ export default class UserListPage extends React.Component<
           {(response: QueryResult<Response>) => {
             if (response.loading) return <p className="Loading">Loading...</p>
             if (response.error) return `Error! ${response.error.message}`
-            return response.data.Users.nodes.map(function(user, index) {
+            return response.data.Users.nodes.map((user, index) => {
               return (
-                <UserCard email={user.email} username={user.name} key={index} />
+                <UserCard
+                  email={user.email}
+                  username={user.name}
+                  id={user.id}
+                  key={index}
+                  onCardSelect={this.handleCheck}
+                />
               )
             })
           }}
@@ -84,5 +92,9 @@ export default class UserListPage extends React.Component<
     this.setState({
       offset: this.state.offset + PAGEOFFSET,
     })
+  }
+
+  handleCheck = (id: string) => {
+    console.log(id);
   }
 }
