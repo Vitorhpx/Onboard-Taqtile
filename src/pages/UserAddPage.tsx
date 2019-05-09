@@ -140,8 +140,9 @@ export default class UserAddPage extends React.Component<
                 errorMessage="Função Inválida, deve ser 'user' ou 'admin"
               />
               <button type="submit" className="LoginButton">
-                Fazer Login
+                Criar Usuário
               </button>
+              {result.error && <p className="Error">{result.error.message}</p>}
             </form>
           )}
         </Mutation>
