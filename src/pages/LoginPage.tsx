@@ -6,8 +6,8 @@ import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
 import { Layout } from "../layout"
 import { navigate } from "gatsby"
-import { Validator } from "../utils/validator";
-import { Field } from "../components/field";
+import { Validator } from "../utils/validator"
+import { Field } from "../components/field"
 
 interface LoginPageState {
   submitted: boolean
@@ -59,13 +59,13 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
             >
               <h1 className="LoginTitle">Bem vindo à Taqtile</h1>
               <Field
-              canShowError={this.state.submitted && !this.state.isEmailValid}
-              setField={this.handleSetEmail}
-              setValid={this.handleEmailSetValid}
-              name="email"
-              placeholder="Email"
-              validation={Validator.isEmail}
-              errorMessage="Email Inválido"
+                canShowError={this.state.submitted && !this.state.isEmailValid}
+                setField={this.handleSetEmail}
+                setValid={this.handleEmailSetValid}
+                name="email"
+                placeholder="Email"
+                validation={Validator.isEmail}
+                errorMessage="Email Inválido"
               />
               <PasswordField
                 canShowError={submitted}
