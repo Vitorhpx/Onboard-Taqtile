@@ -85,5 +85,4 @@ export default class UserListPage extends React.Component<
       offset: this.state.offset + PAGEOFFSET,
     })
   }
-
 }
