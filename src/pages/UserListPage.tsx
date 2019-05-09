@@ -4,6 +4,7 @@ import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
+import {PAGEOFFSET} from "../constants"
 
 interface UserListPageState {
   limit: number
@@ -75,13 +76,14 @@ export default class UserListPage extends React.Component<
 
   handlePreviousPage = () => {
     this.setState({
-      offset: this.state.offset - 10,
+      offset: this.state.offset - PAGEOFFSET,
     })
   }
 
   handleNextPage = () => {
     this.setState({
-      offset: this.state.offset + 10,
+      offset: this.state.offset + PAGEOFFSET,
     })
   }
+
 }
