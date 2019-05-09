@@ -5,10 +5,7 @@ interface UserCardProps {
   email:string,
 }
 
-interface UserCardState {
-}
-
-export class UserCard extends React.Component<UserCardProps, UserCardState> {
+export class UserCard extends React.Component<UserCardProps, any> {
     constructor(props) {
         super(props);
 
