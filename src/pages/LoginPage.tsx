@@ -64,7 +64,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 onValueChange={this.handleSetEmail}
                 onValidChange={this.handleEmailSetValid}
                 name="email"
-                placeholder="Email"
+                placeholder="example@email.com"
+                text="Email"
                 validation={Validator.isEmail}
                 errorMessage="Email Inválido"
                 type="text"
@@ -74,7 +75,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 onValueChange={this.handlePasswordChange}
                 onValidChange={this.handlePasswordSetValid}
                 name="password"
-                placeholder="Senha"
+                placeholder="*******"
+                text="Senha"
                 validation={Validator.isRole}
                 errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
                 type="password"
