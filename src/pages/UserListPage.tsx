@@ -4,7 +4,6 @@ import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
-import { PAGEOFFSET } from "../constants"
 import { navigate } from "gatsby"
 
 interface UserListPageState {
@@ -12,6 +11,8 @@ interface UserListPageState {
   offset: number
   loading: boolean
 }
+
+const PAGEOFFSET = 10
 
 const USERS_QUERY = gql`
   query getUsers($limit: Int, $offset: Int) {

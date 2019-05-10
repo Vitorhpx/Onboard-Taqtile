@@ -4,7 +4,6 @@ import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
-import { PAGEOFFSET } from "../constants"
 import { UserCardFullInfo } from "../containers/user-card-full-info";
 
 
@@ -52,15 +51,16 @@ export default class UserDetailsPage extends React.Component<
           variables={{ id: this.props.location.state.id}}
         >
           {(response: QueryResult<Response>) => {
+            const user = response.data.User
             if (response.loading) return <p className="Loading">Loading...</p>
             if (response.error) return `Error! ${response.error.message}`
             return <UserCardFullInfo
-            email={response.data.User.email}
-            name={response.data.User.name}
-            birthDate={response.data.User.birthDate}
-            role={response.data.User.role}
-            id={response.data.User.id}
-            cpf={response.data.User.cpf}
+            email={user.email}
+            name={user.name}
+            birthDate={user.birthDate}
+            role={user.role}
+            id={user.id}
+            cpf={user.cpf}
           />
           }}
         </Query>
@@ -72,28 +72,3 @@ export default class UserDetailsPage extends React.Component<
     console.log(this.props.location.state.id);
   }
 }
-
-/*
-
-        <Query
-          query={GETUSER}
-          variables={{ }}
-        >
-          {(response: QueryResult<Response>) => {
-            if (response.loading) return <p className="Loading">Loading...</p>
-            if (response.error) return `Error! ${response.error.message}`
-            return response.data.Users.nodes.map((user, index) => {
-              return (
-                <UserCard
-                  email={user.email}
-                  username={user.name}
-                  id={user.id}
-                  key={index}
-                  onCardSelect={this.handleCheck}
-                />
-              )
-            })
-          }}
-        </Query>
-
-*/
