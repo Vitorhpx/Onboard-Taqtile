@@ -1,15 +1,15 @@
 import styled,{css} from 'styled-components'
 
-export const ErrorMessage = styled.p`
+export const LoadingMessage = styled.p`
   display:none;
   text-align: center;
   font-size: 12px;
-  color: red;
+  color: grey;
   margin-top: 8px;
-  width: 100%;
+  width: 100%
 
   ${props =>
-    props.error &&
+    props.loading &&
     css`
       display: block;
     `}

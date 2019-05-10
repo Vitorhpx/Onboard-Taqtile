@@ -6,9 +6,11 @@ import { Layout } from "../layout"
 import { navigate } from "gatsby"
 import { Validator } from "../utils/validator"
 import { Field } from "../components/field"
-import { Button} from "../components/button"
-import { Title} from "../components/title"
-import { StyledForm} from "../components/form-styled"
+import { Button } from "../components/styled-button"
+import { Title } from "../components/title"
+import { StyledForm } from "../components/form-styled"
+import { ErrorMessage } from "../components/error-message";
+import { LoadingMessage } from "../components/loading-message";
 
 interface LoginPageState {
   submitted: boolean
@@ -56,9 +58,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 this.handleSubmit(mutation, event)
               }}
               noValidate
-              className="Form"
             >
-              <Title className="LoginTitle">Bem vindo à Taqtile</Title>
+              <Title>Bem vindo à Taqtile</Title>
               <Field
                 canShowError={this.state.submitted && !this.state.isEmailValid}
                 onValueChange={this.handleSetEmail}
@@ -71,13 +72,15 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isPasswordValid}
+                canShowError={
+                  this.state.submitted && !this.state.isPasswordValid
+                }
                 onValueChange={this.handlePasswordChange}
                 onValidChange={this.handlePasswordSetValid}
                 name="password"
                 placeholder="*******"
                 text="Senha"
-                validation={Validator.isRole}
+                validation={Validator.isPassword}
                 errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
                 type="password"
               />
@@ -88,8 +91,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               >
                 Fazer Login
               </Button>
-              {result.error && <p className="Error">{result.error.message}</p>}
-              {result.loading && <p className="Loading">Loading...</p>}
+              {result.error && <ErrorMessage error>{result.error.message}</ErrorMessage>}
+              {result.loading && <LoadingMessage loading>Loading...</LoadingMessage>}
             </StyledForm>
           )}
         </Mutation>

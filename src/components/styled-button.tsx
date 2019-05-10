@@ -8,5 +8,9 @@ export const Button = styled.button`
   border: 2px solid #6f36b7;
   height: 44px;
   padding: 0.25em 1em;
-  margin: 3px;
+  margin-top: 20px;
+
+  :disabled{
+    background-color: #bda1e0;
+  }
 `
