@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
+import { ErrorMessage } from './error-message';
 
 interface FieldProps {
     canShowError: boolean
@@ -41,7 +42,7 @@ export class Field extends React.Component<FieldProps, FieldState> {
         return(
             <>
               <input type = "text" className = "FormInput" name = {this.props.name} placeholder = {this.props.placeholder} onChange = {this.handleFieldChange} required />
-              {(this.props.canShowError && !isFieldValid) && <span className = 'Error'>{this.props.errorMessage}</span>}
+              <ErrorMessage error = {(this.props.canShowError && !isFieldValid)}>{this.props.errorMessage}</ErrorMessage>
             </>
         );
     };

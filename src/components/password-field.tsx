@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
+import { ErrorMessage } from './error-message';
 
 interface PasswordProps {
     canShowError: boolean
@@ -37,7 +38,7 @@ export class PasswordField extends React.Component<PasswordProps, PasswordState>
         return(
             <>
               <input type = "password" className = "FormInput" name = "password" placeholder = "Senha" onChange = {this.handlePasswordChange} required />
-              {(this.props.canShowError && !isPasswordValid) && <span className = 'Error'>Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito</span>}
+              <ErrorMessage error = {(this.props.canShowError && !isPasswordValid)}>Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito</ErrorMessage>
             </>
         );
     };

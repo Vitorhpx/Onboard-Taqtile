@@ -8,6 +8,9 @@ import { Layout } from "../layout"
 import { navigate } from "gatsby"
 import { Validator } from "../utils/validator"
 import { Field } from "../components/field"
+import { Button} from "../components/button"
+import { Title} from "../components/title"
+import { Form} from "../components/form"
 
 interface LoginPageState {
   submitted: boolean
@@ -49,7 +52,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
           onCompleted={data => this.handleCompleted(data)}
         >
           {(mutation, result: MutationResult) => (
-            <form
+            <Form
               method="post"
               onSubmit={event => {
                 this.handleSubmit(mutation, event)
@@ -57,7 +60,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               noValidate
               className="Form"
             >
-              <h1 className="LoginTitle">Bem vindo à Taqtile</h1>
+              <Title className="LoginTitle">Bem vindo à Taqtile</Title>
               <Field
                 canShowError={this.state.submitted && !this.state.isEmailValid}
                 setField={this.handleSetEmail}
@@ -72,16 +75,16 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 setPassword={this.handlePasswordChange}
                 setValid={this.handlePasswordSetValid}
               />
-              <button
+              <Button
                 type="submit"
                 className="LoginButton"
                 disabled={result.loading}
               >
                 Fazer Login
-              </button>
+              </Button>
               {result.error && <p className="Error">{result.error.message}</p>}
               {result.loading && <p className="Loading">Loading...</p>}
-            </form>
+            </Form>
           )}
         </Mutation>
       </Layout>
