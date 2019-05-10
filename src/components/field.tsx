@@ -5,8 +5,8 @@ import { StyledInput } from './input-styled';
 
 interface FieldProps {
     canShowError: boolean
-    setField: Function
-    setValid: Function
+    onValueChange: (value: string) => void
+    onValidChange: (validity: boolean) => void
     validation: Function
     errorMessage: string
     name: string
@@ -35,8 +35,8 @@ export class Field extends React.Component<FieldProps, FieldState> {
         this.setState({
           isFieldValid: isValid,
           }) ;
-        this.props.setField(value);
-        this.props.setValid(isValid);
+        this.props.onValueChange(value);
+        this.props.onValidChange(isValid);
       }
 
     render(){

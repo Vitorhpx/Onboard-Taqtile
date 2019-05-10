@@ -86,9 +86,9 @@ export default class UserAddPage extends React.Component<
             >
               <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
               <Field
-                canShowError={this.state.submitted && !this.state.isNameValid}
-                setField={this.handleSetName}
-                setValid={this.handleNameSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetName}
+                onValidChange={this.handleNameSetValid}
                 name="name"
                 placeholder="Nome"
                 validation={Validator.isName}
@@ -96,9 +96,9 @@ export default class UserAddPage extends React.Component<
                 type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isCpfValid}
-                setField={this.handleSetCpf}
-                setValid={this.handleCpfSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetCpf}
+                onValidChange={this.handleCpfSetValid}
                 name="cpf"
                 placeholder="CPF"
                 validation={Validator.isCpf}
@@ -107,10 +107,10 @@ export default class UserAddPage extends React.Component<
               />
               <Field
                 canShowError={
-                  this.state.submitted && !this.state.isBirthDateValid
+                  this.state.submitted
                 }
-                setField={this.handleSetBirthDate}
-                setValid={this.handleBirthDateSetValid}
+                onValueChange={this.handleSetBirthDate}
+                onValidChange={this.handleBirthDateSetValid}
                 name="birthDate"
                 placeholder="Data de Nascimento"
                 validation={Validator.isBirthDate}
@@ -118,9 +118,9 @@ export default class UserAddPage extends React.Component<
                 type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isEmailValid}
-                setField={this.handleSetEmail}
-                setValid={this.handleEmailSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetEmail}
+                onValidChange={this.handleEmailSetValid}
                 name="email"
                 placeholder="Email"
                 validation={Validator.isEmail}
@@ -128,9 +128,9 @@ export default class UserAddPage extends React.Component<
                 type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isPasswordValid}
-                setField={this.handleSetPassword}
-                setValid={this.handlePasswordSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetPassword}
+                onValidChange={this.handlePasswordSetValid}
                 name="password"
                 placeholder="Senha"
                 validation={Validator.isPassword}
@@ -138,9 +138,9 @@ export default class UserAddPage extends React.Component<
                 type="password"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isRoleValid}
-                setField={this.handleSetRole}
-                setValid={this.handleRoleSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetRole}
+                onValidChange={this.handleRoleSetValid}
                 name="role"
                 placeholder="Função"
                 validation={Validator.isRole}

@@ -61,8 +61,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               <Title className="LoginTitle">Bem vindo à Taqtile</Title>
               <Field
                 canShowError={this.state.submitted && !this.state.isEmailValid}
-                setField={this.handleSetEmail}
-                setValid={this.handleEmailSetValid}
+                onValueChange={this.handleSetEmail}
+                onValidChange={this.handleEmailSetValid}
                 name="email"
                 placeholder="Email"
                 validation={Validator.isEmail}
@@ -71,8 +71,8 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               />
               <Field
                 canShowError={this.state.submitted && !this.state.isPasswordValid}
-                setField={this.handlePasswordChange}
-                setValid={this.handlePasswordSetValid}
+                onValueChange={this.handlePasswordChange}
+                onValidChange={this.handlePasswordSetValid}
                 name="password"
                 placeholder="Senha"
                 validation={Validator.isRole}
