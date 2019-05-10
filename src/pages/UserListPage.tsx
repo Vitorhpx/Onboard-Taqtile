@@ -5,6 +5,7 @@ import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
 import { PAGEOFFSET } from "../constants"
+import { navigate } from "gatsby"
 
 interface UserListPageState {
   limit: number
@@ -95,6 +96,6 @@ export default class UserListPage extends React.Component<
   }
 
   handleCheck = (id: string) => {
-    console.log(id);
+    navigate("/UserDetailsPage/", {state:{ id }})
   }
 }
