@@ -4,6 +4,7 @@ import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
+import { navigate } from "gatsby"
 
 interface UserListPageState {
   limit: number
@@ -11,12 +12,15 @@ interface UserListPageState {
   loading: boolean
 }
 
+const PAGEOFFSET = 10
+
 const USERS_QUERY = gql`
   query getUsers($limit: Int, $offset: Int) {
     Users(limit: $limit, offset: $offset) {
       nodes {
         name
         email
+        id
       }
     }
   }
@@ -24,6 +28,7 @@ const USERS_QUERY = gql`
 type User = {
   name: string
   email: string
+  id: string
 }
 type Users = {
   nodes: User[]
@@ -56,9 +61,15 @@ export default class UserListPage extends React.Component<
           {(response: QueryResult<Response>) => {
             if (response.loading) return <p className="Loading">Loading...</p>
             if (response.error) return `Error! ${response.error.message}`
-            return response.data.Users.nodes.map(function(user, index) {
+            return response.data.Users.nodes.map((user, index) => {
               return (
-                <UserCard email={user.email} username={user.name} key={index} />
+                <UserCard
+                  email={user.email}
+                  username={user.name}
+                  id={user.id}
+                  key={index}
+                  onCardSelect={this.handleCheck}
+                />
               )
             })
           }}
@@ -75,13 +86,17 @@ export default class UserListPage extends React.Component<
 
   handlePreviousPage = () => {
     this.setState({
-      offset: this.state.offset - 10,
+      offset: this.state.offset - PAGEOFFSET,
     })
   }
 
   handleNextPage = () => {
     this.setState({
-      offset: this.state.offset + 10,
+      offset: this.state.offset + PAGEOFFSET,
     })
+  }
+
+  handleCheck = (id: string) => {
+    navigate("/UserDetailsPage/", {state:{ id }})
   }
 }

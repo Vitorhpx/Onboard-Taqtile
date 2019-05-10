@@ -9,16 +9,25 @@ import { navigate } from "gatsby"
 import { Field } from "../components/field"
 import { Validator } from "../utils/validator"
 
+const CREATEUSER = gql`
+  mutation createUser($data: UserInput!) {
+    UserCreate(data: $data) {
+      name
+      email
+    }
+  }
+`
+
 interface UserAddPageState {
   submitted: boolean
   errorMessage: string
-  id: string
+  password: string
   name: string
   cpf: string
   birthDate: string
   email: string
   role: string
-  isIdValid: boolean
+  isPasswordValid: boolean
   isNameValid: boolean
   isCpfValid: boolean
   isBirthDateValid: boolean
@@ -26,18 +35,21 @@ interface UserAddPageState {
   isRoleValid: boolean
 }
 
-export default class UserAddPage extends React.Component<any, UserAddPageState> {
+export default class UserAddPage extends React.Component<
+  any,
+  UserAddPageState
+> {
   constructor(props) {
     super(props)
     this.state = {
       submitted: false,
-      id: "",
+      password: "",
       name: "",
       cpf: "",
       birthDate: "",
       email: "",
       role: "",
-      isIdValid: false,
+      isPasswordValid: false,
       isNameValid: false,
       isCpfValid: false,
       isBirthDateValid: false,
@@ -51,79 +63,112 @@ export default class UserAddPage extends React.Component<any, UserAddPageState> 
     const { submitted } = this.state
     return (
       <Layout>
-        <form
-          method="post"
-          onSubmit={event => {
-            this.handleSubmit(event)
+        <Mutation
+          mutation={CREATEUSER}
+          variables={{
+            data: {
+              name: this.state.name,
+              email: this.state.email,
+              cpf: this.state.cpf,
+              birthDate: this.state.birthDate,
+              password: this.state.password,
+              role: this.state.role,
+            },
           }}
-          noValidate
-          className="Login"
+          onCompleted={() => this.handleCompleted()}
         >
-          <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
-          <Field
-            canShowError={this.state.isIdValid}
-            setField={this.handleSetId}
-            setValid={this.handleIdSetValid}
-            name="id"
-            placeholder="Id"
-            validation={Validator.isId}
-            errorMessage="Id inválido"
-          />
-          <Field
-            canShowError={this.state.submitted && !this.state.isCpfValid}
-            setField={this.handleSetCpf}
-            setValid={this.handleCpfSetValid}
-            name="cpf"
-            placeholder="CPF"
-            validation={Validator.isCpf}
-            errorMessage="CPF inválido"
-          />
-          <Field
-            canShowError={this.state.submitted && !this.state.isBirthDateValid}
-            setField={this.handleSetBirthDate}
-            setValid={this.handleBirthDateSetValid}
-            name="birthDate"
-            placeholder="Data de Nascimento"
-            validation={Validator.isBirthDate}
-            errorMessage="Formato AAAA-MM-DD"
-          />
-          <Field
-            canShowError={this.state.submitted && !this.state.isEmailValid}
-            setField={this.handleSetEmail}
-            setValid={this.handleEmailSetValid}
-            name="email"
-            placeholder="Email"
-            validation={Validator.isEmail}
-            errorMessage="Email Inválido"
-          />
-          <Field
-            canShowError={this.state.submitted && !this.state.isRoleValid}
-            setField={this.handleSetRole}
-            setValid={this.handleRoleSetValid}
-            name="role"
-            placeholder="Função"
-            validation={Validator.isRole}
-            errorMessage="Função Inválida, deve ser 'user' ou 'admin"
-          />
-          <button type="submit" className="LoginButton">
-            Fazer Login
-          </button>
-        </form>
+          {(mutation, result: MutationResult) => (
+            <form
+              method="post"
+              onSubmit={event => {
+                this.handleSubmit(mutation, event)
+              }}
+              noValidate
+              className="Form"
+            >
+              <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
+              <Field
+                canShowError={this.state.submitted && !this.state.isNameValid}
+                setField={this.handleSetName}
+                setValid={this.handleNameSetValid}
+                name="name"
+                placeholder="Nome"
+                validation={Validator.isName}
+                errorMessage="Nome deve estar no formato: Joao Silva"
+              />
+              <Field
+                canShowError={this.state.submitted && !this.state.isCpfValid}
+                setField={this.handleSetCpf}
+                setValid={this.handleCpfSetValid}
+                name="cpf"
+                placeholder="CPF"
+                validation={Validator.isCpf}
+                errorMessage="CPF inválido"
+              />
+              <Field
+                canShowError={
+                  this.state.submitted && !this.state.isBirthDateValid
+                }
+                setField={this.handleSetBirthDate}
+                setValid={this.handleBirthDateSetValid}
+                name="birthDate"
+                placeholder="Data de Nascimento"
+                validation={Validator.isBirthDate}
+                errorMessage="Formato AAAA-MM-DD"
+              />
+              <Field
+                canShowError={this.state.submitted && !this.state.isEmailValid}
+                setField={this.handleSetEmail}
+                setValid={this.handleEmailSetValid}
+                name="email"
+                placeholder="Email"
+                validation={Validator.isEmail}
+                errorMessage="Email Inválido"
+              />
+              <PasswordField
+                canShowError={submitted && !this.state.isPasswordValid}
+                setPassword={this.handleSetPassword}
+                setValid={this.handlePasswordSetValid}
+              />
+              <Field
+                canShowError={this.state.submitted && !this.state.isRoleValid}
+                setField={this.handleSetRole}
+                setValid={this.handleRoleSetValid}
+                name="role"
+                placeholder="Função"
+                validation={Validator.isRole}
+                errorMessage="Função Inválida, deve ser 'user' ou 'admin"
+              />
+              <button type="submit" className="LoginButton">
+                Criar Usuário
+              </button>
+              {result.error && <p className="Error">{result.error.message}</p>}
+            </form>
+          )}
+        </Mutation>
       </Layout>
     )
   }
-  handleSubmit = event => {
-    event.preventDefault()
-    const { name, value } = event.target
+  handleSubmit = async (mutateFunction: Function, event) => {
+    event.preventDefault();
     this.setState({
       submitted: true,
     })
-    console.log(this.state)
+    const isFormValid = this.state.isEmailValid && this.state.isPasswordValid && this.state.isBirthDateValid && this.state.isCpfValid && this.state.isRoleValid && this.state.isNameValid
+    if (isFormValid) {
+      await mutateFunction()
+    }
   }
 
-  handleSetId = idField => {
+  handleSetPassword = passwordField => {
     this.setState({
-      id: idField,
+      password: passwordField,
+    })
+  }
+
+  handleSetName = nameField => {
+    this.setState({
+      name: nameField,
     })
   }
 
@@ -151,9 +196,9 @@ export default class UserAddPage extends React.Component<any, UserAddPageState> 
     })
   }
 
-  handleIdSetValid = idValidity => {
+  handlePasswordSetValid = passwordValidity => {
     this.setState({
-      isIdValid: idValidity,
+      isPasswordValid: passwordValidity,
     })
   }
 
@@ -180,9 +225,14 @@ export default class UserAddPage extends React.Component<any, UserAddPageState> 
       isEmailValid: emailValidity,
     })
   }
+
   handleRoleSetValid = roleValidity => {
     this.setState({
       isRoleValid: roleValidity,
     })
+  }
+
+  handleCompleted = () => {
+    navigate("/UserListPage")
   }
 }

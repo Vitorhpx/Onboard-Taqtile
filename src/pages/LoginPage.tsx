@@ -93,8 +93,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
     this.setState({
       submitted: true,
     })
-    /*O password não precisa ser válido para testar o token do admin*/
-    if (this.state.isEmailValid /*&& this.state.isPasswordValid*/) {
+    if (this.state.isEmailValid && this.state.isPasswordValid) {
       await mutateFunction()
     }
   }
