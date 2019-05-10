@@ -1,6 +1,4 @@
 import * as React from "react"
-import { EmailField } from "../components/email-field"
-import { PasswordField } from "../components/password-field"
 import { gql } from "apollo-boost"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
@@ -95,6 +93,7 @@ export default class UserAddPage extends React.Component<
                 placeholder="Nome"
                 validation={Validator.isName}
                 errorMessage="Nome deve estar no formato: Joao Silva"
+                type="text"
               />
               <Field
                 canShowError={this.state.submitted && !this.state.isCpfValid}
@@ -104,6 +103,7 @@ export default class UserAddPage extends React.Component<
                 placeholder="CPF"
                 validation={Validator.isCpf}
                 errorMessage="CPF inválido"
+                type="text"
               />
               <Field
                 canShowError={
@@ -115,6 +115,7 @@ export default class UserAddPage extends React.Component<
                 placeholder="Data de Nascimento"
                 validation={Validator.isBirthDate}
                 errorMessage="Formato AAAA-MM-DD"
+                type="text"
               />
               <Field
                 canShowError={this.state.submitted && !this.state.isEmailValid}
@@ -124,11 +125,17 @@ export default class UserAddPage extends React.Component<
                 placeholder="Email"
                 validation={Validator.isEmail}
                 errorMessage="Email Inválido"
+                type="text"
               />
-              <PasswordField
-                canShowError={submitted && !this.state.isPasswordValid}
-                setPassword={this.handleSetPassword}
+              <Field
+                canShowError={this.state.submitted && !this.state.isPasswordValid}
+                setField={this.handleSetPassword}
                 setValid={this.handlePasswordSetValid}
+                name="password"
+                placeholder="Senha"
+                validation={Validator.isPassword}
+                errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
+                type="password"
               />
               <Field
                 canShowError={this.state.submitted && !this.state.isRoleValid}
@@ -138,6 +145,7 @@ export default class UserAddPage extends React.Component<
                 placeholder="Função"
                 validation={Validator.isRole}
                 errorMessage="Função Inválida, deve ser 'user' ou 'admin"
+                type="text"
               />
               <button type="submit" className="LoginButton">
                 Criar Usuário

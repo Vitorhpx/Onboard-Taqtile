@@ -5,6 +5,7 @@ export const ErrorMessage = styled.p`
   text-align: center;
   font-size: 12px;
   color: red;
+  margin-top: 8px;
 
   ${props =>
     props.error &&

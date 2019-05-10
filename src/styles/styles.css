@@ -108,15 +108,6 @@ video {
   line-height: 3rem;
   font-family: "Dosis";
 }
-
-.FormInput {
-  text-align: center;
-  width: 80%;
-  height: 1.5 rem;
-  border-radius: 3px;
-  padding: 0.5rem;
-}
-
 .LoginButton {
   background-color: #6f36b7;
   color: white;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
 import { ErrorMessage } from './error-message';
+import { StyledInput } from './input-styled';
 
 interface FieldProps {
     canShowError: boolean
@@ -10,6 +11,7 @@ interface FieldProps {
     errorMessage: string
     name: string
     placeholder: string
+    type: string
 }
 
 interface FieldState {
@@ -41,7 +43,7 @@ export class Field extends React.Component<FieldProps, FieldState> {
         const {isFieldValid} = this.state;
         return(
             <>
-              <input type = "text" className = "FormInput" name = {this.props.name} placeholder = {this.props.placeholder} onChange = {this.handleFieldChange} required />
+              <StyledInput type = {this.props.type} error = {(this.props.canShowError && !isFieldValid)} name = {this.props.name} placeholder = {this.props.placeholder} onChange = {this.handleFieldChange} required />
               <ErrorMessage error = {(this.props.canShowError && !isFieldValid)}>{this.props.errorMessage}</ErrorMessage>
             </>
         );

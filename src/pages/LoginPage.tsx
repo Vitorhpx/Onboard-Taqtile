@@ -1,6 +1,4 @@
 import * as React from "react"
-import { EmailField } from "../components/email-field"
-import { PasswordField } from "../components/password-field"
 import { gql } from "apollo-boost"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
@@ -10,7 +8,7 @@ import { Validator } from "../utils/validator"
 import { Field } from "../components/field"
 import { Button} from "../components/button"
 import { Title} from "../components/title"
-import { Form} from "../components/form"
+import { StyledForm} from "../components/form-styled"
 
 interface LoginPageState {
   submitted: boolean
@@ -52,7 +50,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
           onCompleted={data => this.handleCompleted(data)}
         >
           {(mutation, result: MutationResult) => (
-            <Form
+            <StyledForm
               method="post"
               onSubmit={event => {
                 this.handleSubmit(mutation, event)
@@ -69,11 +67,17 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
                 placeholder="Email"
                 validation={Validator.isEmail}
                 errorMessage="Email Inválido"
+                type="text"
               />
-              <PasswordField
-                canShowError={submitted}
-                setPassword={this.handlePasswordChange}
+              <Field
+                canShowError={this.state.submitted && !this.state.isPasswordValid}
+                setField={this.handlePasswordChange}
                 setValid={this.handlePasswordSetValid}
+                name="password"
+                placeholder="Senha"
+                validation={Validator.isRole}
+                errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
+                type="password"
               />
               <Button
                 type="submit"
@@ -84,7 +88,7 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
               </Button>
               {result.error && <p className="Error">{result.error.message}</p>}
               {result.loading && <p className="Loading">Loading...</p>}
-            </Form>
+            </StyledForm>
           )}
         </Mutation>
       </Layout>
