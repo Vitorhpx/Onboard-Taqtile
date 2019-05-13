@@ -1,18 +1,19 @@
 import styled from 'styled-components'
 import { UserCard } from './user-card';
+import { Color } from '../constants';
 
 export const StyledUserCard = styled(UserCard)`
   margin-bottom:1em;
 
   li{
-    background-color:white;
+    background-color:${Color.White};
   }
   h4{
-    color:black;
+    color:${Color.Black};
     margin:0;
   }
   p{
-    color:grey;
+    color:${Color.GrayDark};
     margin:0;
   }
 `

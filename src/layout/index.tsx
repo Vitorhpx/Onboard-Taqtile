@@ -6,10 +6,10 @@ import { StyledHeader } from '../components/header-styled';
 export class Layout extends React.Component {
     render(){
         return(
-          <ApolloProvider client={client}>
-            <StyledHeader>Meu</StyledHeader>
+          <>
+            <StyledHeader>User List Gatsby</StyledHeader>
             {this.props.children}
-          </ApolloProvider>
+          </>
         );
     };
 };

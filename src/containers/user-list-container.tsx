@@ -1,5 +1,5 @@
 import * as React from "react"
-import gql from "graphql-tag"
+import  gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { UserList } from "../components/user-list"
 

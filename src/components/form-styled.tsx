@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components'
+import { Color } from '../constants';
 
 export const StyledForm = styled.form`
   float: center;
@@ -10,14 +11,13 @@ export const StyledForm = styled.form`
   text-align: center;
   width: 30%;
   padding: 2rem;
-  line-height: 3rem;
-  font-family: "Dosis";
+  line-height: 1rem;
 
 
 
   font-size: 12px;
   font-weight:bold;
-  color: grey;
+  color: ${Color.Gray};
   margin-bottom:12px;
   padding: 0.25em 1em;
   ${props =>
