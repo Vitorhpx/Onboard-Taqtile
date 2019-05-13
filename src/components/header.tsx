@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../img/gatsby-logo.png"
+import logo from "../../static/logo.png"
 
 interface HeaderProps {
   className:string

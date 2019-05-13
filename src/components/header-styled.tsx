@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { UserCard } from "./user-card"
 import Header from "./header";
 
 export const StyledHeader = styled(Header)`

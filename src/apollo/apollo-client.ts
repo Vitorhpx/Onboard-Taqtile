@@ -1,7 +1,10 @@
-import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from "apollo-boost";
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloLink} from "apollo-link";
+import {createHttpLink} from "apollo-link-http";
 import { AUTH_TOKEN } from "../constants";
 
-const httpLink = new HttpLink({ uri: "https://tq-template-server-sample.herokuapp.com/graphql" });
+const httpLink = createHttpLink({ uri: "https://tq-template-server-sample.herokuapp.com/graphql" });
 
 const authLink = new ApolloLink((operation, forward) => {
 

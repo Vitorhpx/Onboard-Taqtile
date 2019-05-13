@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Validator } from '../utils/validator';
 import { ErrorMessage } from './error-message';
 import { StyledInput } from './input-styled';
 import { InputTopLabel } from './field-top-label-styled';

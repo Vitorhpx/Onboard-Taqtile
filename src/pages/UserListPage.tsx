@@ -1,10 +1,5 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
-import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
-import { string } from "prop-types"
-import { UserCard } from "../components/user-card"
-import { navigate } from "gatsby"
 import UserListContainer from "../containers/user-list-container";
 import { Button } from "../components/styled-button";
 
@@ -15,17 +10,6 @@ interface UserListPageState {
 
 const PAGEOFFSET = 10
 
-const USERS_QUERY = gql`
-  query getUsers($limit: Int, $offset: Int) {
-    Users(limit: $limit, offset: $offset) {
-      nodes {
-        name
-        email
-        id
-      }
-    }
-  }
-`
 type User = {
   name: string
   email: string

@@ -1,5 +1,4 @@
 import * as React from "react"
-import { StyledUserCard } from "./styled-user-card";
 
 interface UserCardProps {
   username: string

@@ -1,5 +1,4 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
 import { Layout } from "../layout"
 import LoginFormContainer from "../containers/login-form-container";
 
@@ -11,14 +10,6 @@ interface LoginPageState {
   isPasswordValid: boolean
   errorMessage: string
 }
-
-const LOGIN_MUTATION = gql`
-  mutation login($email: String!, $password: String!) {
-    Login(data: { email: $email, password: $password, rememberMe: true }) {
-      token
-    }
-  }
-`
 
 export default class LoginPage extends React.Component<any, LoginPageState> {
   constructor(props) {
