@@ -5,11 +5,11 @@ import { Layout } from "../layout"
 import { string } from "prop-types"
 import { UserCard } from "../containers/user-card"
 import { navigate } from "gatsby"
+import UserListContainer from "../containers/user-list-container";
 
 interface UserListPageState {
   limit: number
   offset: number
-  loading: boolean
 }
 
 const PAGEOFFSET = 10
@@ -46,34 +46,14 @@ export default class UserListPage extends React.Component<
     super(props)
     this.state = {
       limit: 10,
-      offset: 0,
-      loading: false,
+      offset: 0
     }
   }
 
   render() {
     return (
       <Layout>
-        <Query
-          query={USERS_QUERY}
-          variables={{ limit: this.state.limit, offset: this.state.offset }}
-        >
-          {(response: QueryResult<Response>) => {
-            if (response.loading) return <p className="Loading">Loading...</p>
-            if (response.error) return `Error! ${response.error.message}`
-            return response.data.Users.nodes.map((user, index) => {
-              return (
-                <UserCard
-                  email={user.email}
-                  username={user.name}
-                  id={user.id}
-                  key={index}
-                  onCardSelect={this.handleCheck}
-                />
-              )
-            })
-          }}
-        </Query>
+        <UserListContainer limit={this.state.limit} offset={this.state.offset}></UserListContainer>
         <button className="PageButton" onClick={this.handlePreviousPage}>
           Previous Page
         </button>
@@ -94,9 +74,5 @@ export default class UserListPage extends React.Component<
     this.setState({
       offset: this.state.offset + PAGEOFFSET,
     })
-  }
-
-  handleCheck = (id: string) => {
-    navigate("/UserDetailsPage/", {state:{ id }})
   }
 }
