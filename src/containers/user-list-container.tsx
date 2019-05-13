@@ -1,10 +1,6 @@
 import * as React from "react"
 import { gql } from "apollo-boost"
 import { Query, QueryResult } from "react-apollo"
-import { Layout } from "../layout"
-import { string } from "prop-types"
-import { UserCard } from "../containers/user-card"
-import { navigate } from "gatsby"
 import { UserList } from "../components/user-list"
 
 interface UserListContainerProps {

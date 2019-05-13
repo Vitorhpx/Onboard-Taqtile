@@ -9,6 +9,7 @@ export const Button = styled.button`
   height: 44px;
   padding: 0.25em 1em;
   margin-top: 20px;
+  margin-left:10px;
   font-family: 'Ubuntu', sans-serif;
 
   :disabled{

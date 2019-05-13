@@ -3,9 +3,10 @@ import { gql } from "apollo-boost"
 import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { string } from "prop-types"
-import { UserCard } from "../containers/user-card"
+import { UserCard } from "../components/user-card"
 import { navigate } from "gatsby"
 import UserListContainer from "../containers/user-list-container";
+import { Button } from "../components/styled-button";
 
 interface UserListPageState {
   limit: number
@@ -54,12 +55,12 @@ export default class UserListPage extends React.Component<
     return (
       <Layout>
         <UserListContainer limit={this.state.limit} offset={this.state.offset}></UserListContainer>
-        <button className="PageButton" onClick={this.handlePreviousPage}>
+        <Button className="PageButton" onClick={this.handlePreviousPage}>
           Previous Page
-        </button>
-        <button className="PageButton" onClick={this.handleNextPage}>
+        </Button>
+        <Button className="PageButton" onClick={this.handleNextPage}>
           Next Page
-        </button>
+        </Button>
       </Layout>
     )
   }

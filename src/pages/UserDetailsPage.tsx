@@ -2,7 +2,7 @@ import * as React from "react"
 import { gql } from "apollo-boost"
 import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
-import { UserCardFullInfo } from "../containers/user-card-full-info";
+import { UserCardFullInfo } from "../components/user-card-full-info";
 
 
 const GETUSER = gql`
