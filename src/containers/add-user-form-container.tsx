@@ -9,7 +9,7 @@ import { Button } from "../components/styled-button"
 import { ErrorMessage } from "../components/error-message"
 import { StyledForm } from "../components/form-styled"
 import { Title } from "../components/title"
-import AddUserFormContainer from "../containers/add-user-form-container"
+import AddUserForm from "../components/add-user-form"
 
 const CREATEUSER = gql`
   mutation createUser($data: UserInput!) {
@@ -20,14 +20,26 @@ const CREATEUSER = gql`
   }
 `
 
-interface UserAddPageState {}
+export default class AddUserFormContainer extends React.Component<any, any> {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
-export default class UserAddPage extends React.Component<any, any> {
   render() {
     return (
-      <Layout>
-        <AddUserFormContainer />
-      </Layout>
+      <Mutation
+        mutation={CREATEUSER}
+        onCompleted={() => this.handleCompleted()}
+      >
+        {(mutation, result: MutationResult) => (
+          <AddUserForm mutation={mutation} result={result} />
+        )}
+      </Mutation>
     )
+  }
+
+  handleCompleted = () => {
+    navigate("/UserListPage")
   }
 }

@@ -12,8 +12,6 @@ interface UserListContainerProps {
   offset: number
 }
 
-const PAGEOFFSET = 10
-
 const USERS_QUERY = gql`
   query getUsers($limit: Int, $offset: Int) {
     Users(limit: $limit, offset: $offset) {
