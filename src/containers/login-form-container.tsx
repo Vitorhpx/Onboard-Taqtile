@@ -11,9 +11,9 @@ import { Title } from "../components/title"
 import { StyledForm } from "../components/form-styled"
 import { ErrorMessage } from "../components/error-message";
 import { LoadingMessage } from "../components/loading-message";
-import LoginFormContainer from "../containers/login-form-container";
+import LoginForm from "../components/login-form";
 
-interface LoginPageState {
+interface LoginFormContainerState {
   submitted: boolean
   email: string
   password: string
@@ -30,7 +30,7 @@ const LOGIN_MUTATION = gql`
   }
 `
 
-export default class LoginPage extends React.Component<any, LoginPageState> {
+export default class LoginFormContainer extends React.Component<any, LoginFormContainerState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,9 +46,20 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
   render() {
     const { submitted } = this.state
     return (
-      <Layout>
-      <LoginFormContainer></LoginFormContainer>
-      </Layout>
+        <Mutation
+          mutation={LOGIN_MUTATION}
+          onCompleted={data => this.handleCompleted(data)}
+        >
+          {(mutation, result: MutationResult) => (
+            <LoginForm mutation={mutation} result={result}></LoginForm>
+          )}
+        </Mutation>
     )
+  }
+
+  handleCompleted = data => {
+    const { token } = data.Login
+    localStorage.setItem(AUTH_TOKEN, token)
+    navigate("/UserListPage")
   }
 }
