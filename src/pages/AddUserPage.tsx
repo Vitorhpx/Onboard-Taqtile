@@ -20,7 +20,7 @@ const CREATEUSER = gql`
   }
 `
 
-export default class UserAddPage extends React.Component<any, any> {
+export default class AddUserPage extends React.Component<any, any> {
   render() {
     return (
       <Layout>
