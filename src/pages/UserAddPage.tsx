@@ -20,8 +20,6 @@ const CREATEUSER = gql`
   }
 `
 
-interface UserAddPageState {}
-
 export default class UserAddPage extends React.Component<any, any> {
   render() {
     return (
