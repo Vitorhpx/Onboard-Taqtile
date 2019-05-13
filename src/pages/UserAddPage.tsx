@@ -1,6 +1,4 @@
 import * as React from "react"
-import { EmailField } from "../components/email-field"
-import { PasswordField } from "../components/password-field"
 import { gql } from "apollo-boost"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
@@ -8,6 +6,10 @@ import { Layout } from "../layout"
 import { navigate } from "gatsby"
 import { Field } from "../components/field"
 import { Validator } from "../utils/validator"
+import { Button } from "../components/styled-button"
+import { ErrorMessage } from "../components/error-message";
+import { StyledForm } from "../components/form-styled";
+import { Title } from "../components/title";
 
 const CREATEUSER = gql`
   mutation createUser($data: UserInput!) {
@@ -78,83 +80,100 @@ export default class UserAddPage extends React.Component<
           onCompleted={() => this.handleCompleted()}
         >
           {(mutation, result: MutationResult) => (
-            <form
+            <StyledForm
               method="post"
               onSubmit={event => {
                 this.handleSubmit(mutation, event)
               }}
               noValidate
-              className="Form"
             >
-              <h1 className="LoginTitle">Adicionar Novo Usuário</h1>
+              <Title >Adicionar Novo Usuário</Title>
               <Field
-                canShowError={this.state.submitted && !this.state.isNameValid}
-                setField={this.handleSetName}
-                setValid={this.handleNameSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetName}
+                onValidChange={this.handleNameSetValid}
                 name="name"
-                placeholder="Nome"
+                placeholder="Joao Silva"
+                text="Nome"
                 validation={Validator.isName}
                 errorMessage="Nome deve estar no formato: Joao Silva"
+                type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isCpfValid}
-                setField={this.handleSetCpf}
-                setValid={this.handleCpfSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetCpf}
+                onValidChange={this.handleCpfSetValid}
                 name="cpf"
-                placeholder="CPF"
+                placeholder="12345678910"
+                text="CPF"
                 validation={Validator.isCpf}
                 errorMessage="CPF inválido"
+                type="text"
               />
               <Field
-                canShowError={
-                  this.state.submitted && !this.state.isBirthDateValid
-                }
-                setField={this.handleSetBirthDate}
-                setValid={this.handleBirthDateSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetBirthDate}
+                onValidChange={this.handleBirthDateSetValid}
                 name="birthDate"
-                placeholder="Data de Nascimento"
+                text="Data de Nascimento"
+                placeholder="2000-12-30"
                 validation={Validator.isBirthDate}
                 errorMessage="Formato AAAA-MM-DD"
+                type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isEmailValid}
-                setField={this.handleSetEmail}
-                setValid={this.handleEmailSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetEmail}
+                onValidChange={this.handleEmailSetValid}
                 name="email"
-                placeholder="Email"
+                text="Email"
+                placeholder="example@email.com"
                 validation={Validator.isEmail}
                 errorMessage="Email Inválido"
-              />
-              <PasswordField
-                canShowError={submitted && !this.state.isPasswordValid}
-                setPassword={this.handleSetPassword}
-                setValid={this.handlePasswordSetValid}
+                type="text"
               />
               <Field
-                canShowError={this.state.submitted && !this.state.isRoleValid}
-                setField={this.handleSetRole}
-                setValid={this.handleRoleSetValid}
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetPassword}
+                onValidChange={this.handlePasswordSetValid}
+                name="password"
+                text="Senha"
+                placeholder="*******"
+                validation={Validator.isPassword}
+                errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
+                type="password"
+              />
+              <Field
+                canShowError={this.state.submitted}
+                onValueChange={this.handleSetRole}
+                onValidChange={this.handleRoleSetValid}
                 name="role"
-                placeholder="Função"
+                text="Função"
+                placeholder="user"
                 validation={Validator.isRole}
                 errorMessage="Função Inválida, deve ser 'user' ou 'admin"
+                type="text"
               />
-              <button type="submit" className="LoginButton">
-                Criar Usuário
-              </button>
-              {result.error && <p className="Error">{result.error.message}</p>}
-            </form>
+              <Button type="submit">Criar Usuário</Button>
+              {result.error && <ErrorMessage error>{result.error.message}</ErrorMessage>}
+            </StyledForm>
           )}
         </Mutation>
       </Layout>
     )
   }
   handleSubmit = async (mutateFunction: Function, event) => {
-    event.preventDefault();
+    event.preventDefault()
     this.setState({
       submitted: true,
     })
-    const isFormValid = this.state.isEmailValid && this.state.isPasswordValid && this.state.isBirthDateValid && this.state.isCpfValid && this.state.isRoleValid && this.state.isNameValid
+    const isFormValid =
+      this.state.isEmailValid &&
+      this.state.isPasswordValid &&
+      this.state.isBirthDateValid &&
+      this.state.isCpfValid &&
+      this.state.isRoleValid &&
+      this.state.isNameValid
     if (isFormValid) {
       await mutateFunction()
     }

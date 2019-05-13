@@ -23,6 +23,7 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "reflect-metadata": "^0.1.13",
+    "styled-components": "^4.2.0",
     "type-graphql": "^0.17.3"
   },
   "devDependencies": {

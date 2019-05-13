@@ -1,6 +1,4 @@
 import * as React from "react"
-import { EmailField } from "../components/email-field"
-import { PasswordField } from "../components/password-field"
 import { gql } from "apollo-boost"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
@@ -8,6 +6,11 @@ import { Layout } from "../layout"
 import { navigate } from "gatsby"
 import { Validator } from "../utils/validator"
 import { Field } from "../components/field"
+import { Button } from "../components/styled-button"
+import { Title } from "../components/title"
+import { StyledForm } from "../components/form-styled"
+import { ErrorMessage } from "../components/error-message";
+import { LoadingMessage } from "../components/loading-message";
 
 interface LoginPageState {
   submitted: boolean
@@ -49,39 +52,48 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
           onCompleted={data => this.handleCompleted(data)}
         >
           {(mutation, result: MutationResult) => (
-            <form
+            <StyledForm
               method="post"
               onSubmit={event => {
                 this.handleSubmit(mutation, event)
               }}
               noValidate
-              className="Form"
             >
-              <h1 className="LoginTitle">Bem vindo à Taqtile</h1>
+              <Title>Bem vindo à Taqtile</Title>
               <Field
                 canShowError={this.state.submitted && !this.state.isEmailValid}
-                setField={this.handleSetEmail}
-                setValid={this.handleEmailSetValid}
+                onValueChange={this.handleSetEmail}
+                onValidChange={this.handleEmailSetValid}
                 name="email"
-                placeholder="Email"
+                placeholder="example@email.com"
+                text="Email"
                 validation={Validator.isEmail}
                 errorMessage="Email Inválido"
+                type="text"
               />
-              <PasswordField
-                canShowError={submitted}
-                setPassword={this.handlePasswordChange}
-                setValid={this.handlePasswordSetValid}
+              <Field
+                canShowError={
+                  this.state.submitted && !this.state.isPasswordValid
+                }
+                onValueChange={this.handlePasswordChange}
+                onValidChange={this.handlePasswordSetValid}
+                name="password"
+                placeholder="*******"
+                text="Senha"
+                validation={Validator.isPassword}
+                errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
+                type="password"
               />
-              <button
+              <Button
                 type="submit"
                 className="LoginButton"
                 disabled={result.loading}
               >
                 Fazer Login
-              </button>
-              {result.error && <p className="Error">{result.error.message}</p>}
-              {result.loading && <p className="Loading">Loading...</p>}
-            </form>
+              </Button>
+              {result.error && <ErrorMessage error>{result.error.message}</ErrorMessage>}
+              {result.loading && <LoadingMessage loading>Loading...</LoadingMessage>}
+            </StyledForm>
           )}
         </Mutation>
       </Layout>

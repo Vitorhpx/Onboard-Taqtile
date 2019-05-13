@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { Validator } from '../utils/validator';
+import { ErrorMessage } from './error-message';
+import { StyledInput } from './input-styled';
+import { InputTopLabel } from './field-top-label-styled';
 
 interface FieldProps {
     canShowError: boolean
-    setField: Function
-    setValid: Function
+    onValueChange: (value: string) => void
+    onValidChange: (validity: boolean) => void
     validation: Function
     errorMessage: string
     name: string
+    text: string
     placeholder: string
+    type: string
 }
 
 interface FieldState {
@@ -32,16 +37,17 @@ export class Field extends React.Component<FieldProps, FieldState> {
         this.setState({
           isFieldValid: isValid,
           }) ;
-        this.props.setField(value);
-        this.props.setValid(isValid);
+        this.props.onValueChange(value);
+        this.props.onValidChange(isValid);
       }
 
     render(){
         const {isFieldValid} = this.state;
         return(
             <>
-              <input type = "text" className = "FormInput" name = {this.props.name} placeholder = {this.props.placeholder} onChange = {this.handleFieldChange} required />
-              {(this.props.canShowError && !isFieldValid) && <span className = 'Error'>{this.props.errorMessage}</span>}
+              <InputTopLabel>{this.props.text}</InputTopLabel>
+              <StyledInput type = {this.props.type} error = {(this.props.canShowError && !isFieldValid)} name = {this.props.name} placeholder = {this.props.placeholder} onChange = {this.handleFieldChange} required />
+              <ErrorMessage error = {(this.props.canShowError && !isFieldValid)}>{this.props.errorMessage}</ErrorMessage>
             </>
         );
     };
