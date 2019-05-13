@@ -7,6 +7,7 @@ export const StyledUserCard = styled(UserCard)`
 
   li{
     background-color:${Color.White};
+    border:${Color.Black};
   }
   h4{
     color:${Color.Black};
