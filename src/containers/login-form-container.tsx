@@ -16,7 +16,6 @@ const LOGIN_MUTATION = gql`
 
 export default class LoginFormContainer extends React.Component<any, any> {
   render() {
-    const { submitted } = this.state
     return (
         <Mutation
           mutation={LOGIN_MUTATION}
