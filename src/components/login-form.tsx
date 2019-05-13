@@ -35,7 +35,6 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
   }
 
   render() {
-    const { submitted } = this.state
     return (
       <StyledForm
         method="post"

@@ -25,19 +25,3 @@ export class UserList extends React.Component<UserListProps, any> {
     navigate("/UserDetailsPage/", {state:{ id }})
   }
 }
-
-/*
-export const UserList = (Users: Users) => {
-    return Users.nodes.map((user, index) => {
-      return (
-        <UserCard
-          email={user.email}
-          username={user.name}
-          id={user.id}
-          key={index}
-          onCardSelect={this.handleCheck}
-        />
-      )
-  })
-}
-*/

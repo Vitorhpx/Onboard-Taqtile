@@ -10,7 +10,6 @@ export default class Home extends React.Component<any, any> {
   render() {
     return (
       <Layout>
-        <h1> Home </h1>
         <Link to={"/LoginPage"}> Login </Link>
       </Layout>
     )

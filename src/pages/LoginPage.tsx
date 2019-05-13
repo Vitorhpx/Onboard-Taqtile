@@ -1,16 +1,6 @@
 import * as React from "react"
 import { gql } from "apollo-boost"
-import { Mutation, MutationResult } from "react-apollo"
-import { AUTH_TOKEN } from "../constants"
 import { Layout } from "../layout"
-import { navigate } from "gatsby"
-import { Validator } from "../utils/validator"
-import { Field } from "../components/field"
-import { Button } from "../components/styled-button"
-import { Title } from "../components/title"
-import { StyledForm } from "../components/form-styled"
-import { ErrorMessage } from "../components/error-message";
-import { LoadingMessage } from "../components/loading-message";
 import LoginFormContainer from "../containers/login-form-container";
 
 interface LoginPageState {
