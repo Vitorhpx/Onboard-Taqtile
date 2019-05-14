@@ -2,7 +2,7 @@ import * as React from "react"
 import { Layout } from "../layout/"
 import UserListContainer from "../containers/user-list-container"
 import { Button } from "../components/styled-button"
-import { StyledUserList } from "../components/styled-user-list";
+import { StyledUserList } from "../components/user-list-styled";
 
 interface UserListPageState {
   limit: number

@@ -3,9 +3,9 @@ import { navigate } from "gatsby"
 import { Field } from "../components/field"
 import { Validator } from "../utils/validator"
 import { Button } from "../components/styled-button"
-import { ErrorMessage } from "../components/error-message"
+import { ErrorMessage } from "./error-message-styled"
 import { StyledForm } from "../components/form-styled"
-import { Title } from "../components/title"
+import { StyledH1 } from "./h1-styled";
 
 
 interface AddUserFormState {
@@ -64,7 +64,7 @@ export default class AddUserForm extends React.Component<
         }}
         noValidate
       >
-        <Title>Adicionar Novo Usuário</Title>
+        <StyledH1>Adicionar Novo Usuário</StyledH1>
         <Field
           canShowError={this.state.submitted}
           onValueChange={this.handleSetName}

@@ -1,7 +1,8 @@
 import { Users } from "../containers/user-list-container"
 import React from "react"
 import { navigate } from "gatsby";
-import { StyledUserCard } from "./styled-user-card";
+import { StyledUserCard } from "./user-card-styled";
+import { UserCard } from "./user-card";
 
 interface UserListProps {
   users: Users
@@ -17,6 +18,7 @@ export class UserList extends React.Component<UserListProps, any> {
           id={user.id}
           key={index}
           onCardSelect={this.handleCheck}
+          className={"UserCard"}
         />
       )
     })

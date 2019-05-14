@@ -1,4 +1,6 @@
 import * as React from "react"
+import { StyledH4 } from "./h4-styled";
+import { StyledP } from "./p-styled";
 
 interface UserCardProps {
   username: string
@@ -16,10 +18,10 @@ export class UserCard extends React.Component<UserCardProps, any> {
         onClick={this.handleClick}
         id={this.props.id}
       >
-        <h4>
-          <b>User: &nbsp; </b>{this.props.username}
-        </h4>
-        <p><b>Email: </b>{this.props.email}</p>
+        <StyledH4>
+          <b>User: </b>{this.props.username}
+        </StyledH4>
+        <StyledP><b>Email: </b>{this.props.email}</StyledP>
       </div>
     )
   }
