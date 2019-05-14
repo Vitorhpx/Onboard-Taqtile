@@ -3,6 +3,8 @@ import  gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
 import { StyledUserCardFullInfo } from "../components/user-card-full-info-styled";
+import { Link } from "gatsby";
+import { Button } from "../components/styled-button";
 
 
 const GETUSER = gql`
@@ -59,9 +61,14 @@ export default class UserDetailsPage extends React.Component<
             role={user.role}
             id={user.id}
             cpf={user.cpf}
+            className={"UserCardFullInfo"}
           />
           }}
         </Query>
+        <Link to={"/UserListPage"}>
+            <Button className="BackButton"> Back
+            </Button>
+          </Link>
       </Layout>
     )
   }
