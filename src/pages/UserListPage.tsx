@@ -1,7 +1,8 @@
 import * as React from "react"
-import { Layout } from "../layout"
-import UserListContainer from "../containers/user-list-container";
-import { Button } from "../components/styled-button";
+import { Layout } from "../layout/"
+import UserListContainer from "../containers/user-list-container"
+import { Button } from "../components/styled-button"
+import { StyledUserList } from "../components/styled-user-list";
 
 interface UserListPageState {
   limit: number
@@ -31,20 +32,25 @@ export default class UserListPage extends React.Component<
     super(props)
     this.state = {
       limit: 10,
-      offset: 0
+      offset: 0,
     }
   }
 
   render() {
     return (
       <Layout>
-        <UserListContainer limit={this.state.limit} offset={this.state.offset}></UserListContainer>
-        <Button className="PageButton" onClick={this.handlePreviousPage}>
-          Previous Page
-        </Button>
-        <Button className="PageButton" onClick={this.handleNextPage}>
-          Next Page
-        </Button>
+        <StyledUserList>
+          <UserListContainer
+            limit={this.state.limit}
+            offset={this.state.offset}
+          />
+          <Button className="PageButton" onClick={this.handlePreviousPage}>
+            Previous Page
+          </Button>
+          <Button className="PageButton" onClick={this.handleNextPage}>
+            Next Page
+          </Button>
+        </StyledUserList>
       </Layout>
     )
   }

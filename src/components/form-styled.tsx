@@ -10,8 +10,7 @@ export const StyledForm = styled.form`
   align-items: baseline;
   text-align: center;
   max-width: 400px;
-  padding: 2rem;
-  line-height: 1rem;
+  padding: 2em;
 
 
 

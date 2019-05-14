@@ -1,7 +1,8 @@
 import * as React from "react"
-import  gql from "graphql-tag"
+import gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { UserList } from "../components/user-list"
+import { StyledUserList } from "../components/styled-user-list"
 
 interface UserListContainerProps {
   limit: number
@@ -38,16 +39,16 @@ export default class UserListContainer extends React.Component<
 > {
   render() {
     return (
-        <Query
-          query={USERS_QUERY}
-          variables={{ limit: this.props.limit, offset: this.props.offset }}
-        >
-          {(response: QueryResult<Response>) => {
-            if (response.loading) return <p className="Loading">Loading...</p>
-            if (response.error) return `Error! ${response.error.message}`
-            return <UserList users={response.data.Users} />
-          }}
-        </Query>
+      <Query
+        query={USERS_QUERY}
+        variables={{ limit: this.props.limit, offset: this.props.offset }}
+      >
+        {(response: QueryResult<Response>) => {
+          if (response.loading) return <p className="Loading">Loading...</p>
+          if (response.error) return `Error! ${response.error.message}`
+          return <UserList users={response.data.Users} />
+        }}
+      </Query>
     )
   }
 }

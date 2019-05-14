@@ -9,9 +9,8 @@ export const Button = styled.button`
   border: 2px solid;
   height: 44px;
   padding: 0.25em 1em;
-  margin-top: 20px;
-  margin-left:10px;
   font-family: 'Ubuntu', sans-serif;
+  max-width:200px;
 
   :disabled{
     background-color: ${Color.GrayLight};

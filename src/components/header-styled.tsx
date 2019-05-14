@@ -3,11 +3,11 @@ import Header from "./header";
 import { Color } from "../constants";
 
 export const StyledHeader = styled(Header)`
-  @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu");
   padding-bottom:2em;
+  padding-left:1em;
   h1 {
     font-size: 32px;
-    color: ${Color.Primary};
+    color: ${Color.Black};
     padding-left: 10px;
     padding-bottom: 30px;
     font-family: "Ubuntu", sans-serif;

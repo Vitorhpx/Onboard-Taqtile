@@ -9,5 +9,7 @@ export const InputTopLabel = styled.p`
   width: 100%;
   margin-left: 40px;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Ubuntu',sans-serif;
+  margin-bottom: 1em;
+
 `

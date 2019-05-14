@@ -19,3 +19,10 @@ export class Color{
   public static readonly Sucess = '#9dff9b';
 
 }
+
+//Display constants
+
+export class Constrains{
+  public static readonly BorderRadius = "8px"
+  public static readonly UserCardWidth = "1000px"
+}

@@ -8,6 +8,7 @@ export const StyledInput = styled.input`
   border-radius: 10px;
   padding: 0.5rem;
   border: 1px solid gray;
+  margin-bottom: 1em;
   ${props =>
     props.error &&
     css`
