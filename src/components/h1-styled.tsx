@@ -12,5 +12,6 @@ export const StyledH1 = styled.h1`
   padding-bottom: 10px;
   font-family: 'Ubuntu', sans-serif;
   text-align:left;
+  margin-bottom: 1em;
   color: ${props => props.color};
 `

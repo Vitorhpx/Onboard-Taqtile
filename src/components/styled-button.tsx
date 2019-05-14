@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {Color} from '../constants'
 
 export const Button = styled.button`
@@ -10,7 +10,14 @@ export const Button = styled.button`
   height: 44px;
   padding: 0.25em 1em;
   font-family: 'Ubuntu', sans-serif;
+  min-width:150px;
   max-width:200px;
+
+  ${props =>
+    props.CTA &&
+    css`
+    background-color: ${Color.CallToAction}
+    `};
 
   :disabled{
     background-color: ${Color.GrayLight};

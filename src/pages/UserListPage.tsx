@@ -3,6 +3,7 @@ import { Layout } from "../layout/"
 import UserListContainer from "../containers/user-list-container"
 import { Button } from "../components/styled-button"
 import { StyledUserList } from "../components/user-list-styled";
+import { Link } from "@reach/router";
 
 interface UserListPageState {
   limit: number
@@ -50,6 +51,13 @@ export default class UserListPage extends React.Component<
           <Button className="PageButton" onClick={this.handleNextPage}>
             Next Page
           </Button>
+          <div>
+
+            <Link to={"/AddUserPage"}>
+            <Button className="AddUserButton" CTA> Add User
+            </Button>
+            </Link>
+          </div>
         </StyledUserList>
       </Layout>
     )

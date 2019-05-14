@@ -8,7 +8,7 @@ export class Color{
 
   public static readonly Primary = '#8f71ff';
   public static readonly Secundary = '#866ec7';
-  public static readonly CallToAction = '#b7fbff';
+  public static readonly CallToAction = '#86d385';
   public static readonly Acessory = '#82acff';
 
   public static readonly GrayLight = '#afafaf';

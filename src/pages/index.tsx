@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Layout } from "../layout"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 export default class Home extends React.Component<any, any> {
   constructor(props) {
@@ -10,7 +10,8 @@ export default class Home extends React.Component<any, any> {
   render() {
     return (
       <Layout>
-        <Link to={"/LoginPage"}> Login </Link>
+        Loading...
+        {navigate("/LoginPage")}
       </Layout>
     )
   }
