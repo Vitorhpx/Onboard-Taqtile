@@ -4,7 +4,9 @@ import { Color, Constrains } from '../constants';
 
 export const StyledUserList = styled.ul`
   margin-left: 1em;
+  margin-right:1em;
   max-width: ${Constrains.UserCardWidth};
-  margin: 0 auto;
+  margin: 0 2em;
   text-align: center;
+  padding-left: 0;
 `

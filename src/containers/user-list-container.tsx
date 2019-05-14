@@ -2,7 +2,7 @@ import * as React from "react"
 import gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { UserList } from "../components/user-list"
-import { StyledUserList } from "../components/styled-user-list"
+import { StyledUserList } from "../components/user-list-styled"
 
 interface UserListContainerProps {
   limit: number

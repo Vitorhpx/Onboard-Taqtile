@@ -44,6 +44,9 @@ export default class UserDetailsPage extends React.Component<
   }
 
   render() {
+    if (!this.props.location.state) {
+      return null
+    }
     return (
       <Layout>
         <Query

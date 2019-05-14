@@ -4,7 +4,7 @@ import { Color } from "../constants";
 
 export const StyledHeader = styled(Header)`
   padding-bottom:2em;
-  padding-left:1em;
+  padding-left:2em;
 
   img {
     position: relative;
