@@ -1,11 +1,9 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
-import { Query, QueryResult } from "react-apollo"
-import { Layout } from "../layout"
-import { string } from "prop-types"
-import { UserCard } from "../containers/user-card"
-import { navigate } from "gatsby"
-import UserListContainer from "../containers/user-list-container";
+import { Layout } from "../layout/"
+import UserListContainer from "../containers/user-list-container"
+import { Button } from "../components/styled-button"
+import { StyledUserList } from "../components/user-list-styled";
+import { Link } from "@reach/router";
 
 interface UserListPageState {
   limit: number
@@ -14,17 +12,6 @@ interface UserListPageState {
 
 const PAGEOFFSET = 10
 
-const USERS_QUERY = gql`
-  query getUsers($limit: Int, $offset: Int) {
-    Users(limit: $limit, offset: $offset) {
-      nodes {
-        name
-        email
-        id
-      }
-    }
-  }
-`
 type User = {
   name: string
   email: string
@@ -46,20 +33,32 @@ export default class UserListPage extends React.Component<
     super(props)
     this.state = {
       limit: 10,
-      offset: 0
+      offset: 0,
     }
   }
 
   render() {
     return (
       <Layout>
-        <UserListContainer limit={this.state.limit} offset={this.state.offset}></UserListContainer>
-        <button className="PageButton" onClick={this.handlePreviousPage}>
-          Previous Page
-        </button>
-        <button className="PageButton" onClick={this.handleNextPage}>
-          Next Page
-        </button>
+        <StyledUserList>
+          <UserListContainer
+            limit={this.state.limit}
+            offset={this.state.offset}
+          />
+          <Button className="PageButton" onClick={this.handlePreviousPage}>
+            Previous Page
+          </Button>
+          <Button className="PageButton" onClick={this.handleNextPage}>
+            Next Page
+          </Button>
+          <div>
+
+            <Link to={"/AddUserPage"}>
+            <Button className="AddUserButton" CTA> Add User
+            </Button>
+            </Link>
+          </div>
+        </StyledUserList>
       </Layout>
     )
   }

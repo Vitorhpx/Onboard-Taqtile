@@ -1,5 +1,5 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
+import  gql from "graphql-tag"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
 import { navigate } from "gatsby"

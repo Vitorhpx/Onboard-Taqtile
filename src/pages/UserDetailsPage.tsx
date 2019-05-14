@@ -1,8 +1,8 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
+import  gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
-import { UserCardFullInfo } from "../containers/user-card-full-info";
+import { StyledUserCardFullInfo } from "../components/user-card-full-info-styled";
 
 
 const GETUSER = gql`
@@ -52,7 +52,7 @@ export default class UserDetailsPage extends React.Component<
             const user = response.data.User
             if (response.loading) return <p className="Loading">Loading...</p>
             if (response.error) return `Error! ${response.error.message}`
-            return <UserCardFullInfo
+            return <StyledUserCardFullInfo
             email={user.email}
             name={user.name}
             birthDate={user.birthDate}

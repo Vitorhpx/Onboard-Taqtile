@@ -1,23 +1,14 @@
 import * as React from "react"
-import { gql } from "apollo-boost"
-import { Mutation, MutationResult } from "react-apollo"
-import { Layout } from "../layout"
 import { navigate } from "gatsby"
 import { Field } from "../components/field"
 import { Validator } from "../utils/validator"
 import { Button } from "../components/styled-button"
-import { ErrorMessage } from "../components/error-message"
+import { ErrorMessage } from "./error-message-styled"
 import { StyledForm } from "../components/form-styled"
-import { Title } from "../components/title"
+import { StyledH1 } from "./h1-styled";
+import { StyledH2 } from "./h2-styled";
+import { Color } from "../constants";
 
-const CREATEUSER = gql`
-  mutation createUser($data: UserInput!) {
-    UserCreate(data: $data) {
-      name
-      email
-    }
-  }
-`
 
 interface AddUserFormState {
   submitted: boolean
@@ -75,7 +66,7 @@ export default class AddUserForm extends React.Component<
         }}
         noValidate
       >
-        <Title>Adicionar Novo Usuário</Title>
+        <StyledH2 color = {Color.Black}>Adicionar Novo Usuário</StyledH2>
         <Field
           canShowError={this.state.submitted}
           onValueChange={this.handleSetName}

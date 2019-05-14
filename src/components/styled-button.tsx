@@ -1,16 +1,25 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+import {Color} from '../constants'
 
 export const Button = styled.button`
-  background-color: #6f36b7;
+  background-color: ${Color.Primary};
   font-size: 16px;
   color: white;
   border-radius: 8px;
-  border: 2px solid #6f36b7;
+  border: 2px solid;
   height: 44px;
   padding: 0.25em 1em;
-  margin-top: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  min-width:150px;
+  max-width:200px;
+
+  ${props =>
+    props.CTA &&
+    css`
+    background-color: ${Color.CallToAction}
+    `};
 
   :disabled{
-    background-color: #bda1e0;
+    background-color: ${Color.GrayLight};
   }
 `

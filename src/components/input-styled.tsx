@@ -1,4 +1,5 @@
 import styled,{css} from 'styled-components'
+import { Color } from '../constants';
 
 export const StyledInput = styled.input`
   text-align: center;
@@ -7,9 +8,10 @@ export const StyledInput = styled.input`
   border-radius: 10px;
   padding: 0.5rem;
   border: 1px solid gray;
+  margin-bottom: 1em;
   ${props =>
     props.error &&
     css`
-    background-color: #ffb7b7;
+    background-color: ${Color.Error};
     `};
 `

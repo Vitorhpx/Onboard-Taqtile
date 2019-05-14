@@ -2,10 +2,11 @@ import * as React from "react"
 import { Validator } from "../utils/validator"
 import { Field } from "../components/field"
 import { Button } from "../components/styled-button"
-import { Title } from "../components/title"
 import { StyledForm } from "../components/form-styled"
-import { ErrorMessage } from "../components/error-message"
-import { LoadingMessage } from "../components/loading-message"
+import { ErrorMessage } from "./error-message-styled"
+import { LoadingMessage } from "./loading-message-styled"
+import { StyledH2 } from "./h2-styled";
+import { Color } from "../constants";
 
 interface LoginFormState {
   submitted: boolean
@@ -35,7 +36,6 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
   }
 
   render() {
-    const { submitted } = this.state
     return (
       <StyledForm
         method="post"
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
         }}
         noValidate
       >
-        <Title>Bem vindo à Taqtile</Title>
+        <StyledH2 color = {Color.Black}>Bem vindo à Taqtile</StyledH2>
         <Field
           canShowError={this.state.submitted && !this.state.isEmailValid}
           onValueChange={this.handleSetEmail}
