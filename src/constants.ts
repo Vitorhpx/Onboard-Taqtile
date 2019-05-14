@@ -26,3 +26,19 @@ export class Constrains{
   public static readonly BorderRadius = "8px"
   public static readonly UserCardWidth = "1000px"
 }
+
+//Font families
+
+export class Fonts{
+  public static readonly SanSerif = "'Ubuntu', sans-serif;"
+}
+
+//Font Sizes
+
+export class FontSizes{
+  public static readonly XLarge = "32px"
+  public static readonly Large = "24px"
+  public static readonly Medium = "16px"
+  public static readonly Small = "8px"
+  public static readonly XSmall = "4px"
+}

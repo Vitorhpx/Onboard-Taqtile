@@ -4,6 +4,7 @@ import { Color } from "../constants";
 
 export const HeaderWrapper = styled.div`
   padding-bottom:2em;
+<<<<<<< HEAD
   padding-left:2em;
 
   img {
@@ -12,4 +13,7 @@ export const HeaderWrapper = styled.div`
     top:10px;
     height:3em;
   }
+=======
+  padding-left:1em;
+>>>>>>> Fonts extraction
 `
