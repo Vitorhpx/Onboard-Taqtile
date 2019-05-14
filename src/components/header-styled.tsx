@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Header from "./header";
 import { Color } from "../constants";
 
-export const StyledHeader = styled(Header)`
+export const HeaderWrapper = styled.div`
   padding-bottom:2em;
   padding-left:2em;
 

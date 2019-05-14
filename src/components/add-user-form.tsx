@@ -5,8 +5,8 @@ import { Validator } from "../utils/validator"
 import { Button } from "../components/styled-button"
 import { ErrorMessage } from "./error-message-styled"
 import { StyledForm } from "../components/form-styled"
-import { StyledH1 } from "./h1-styled";
-import { StyledH2 } from "./h2-styled";
+import { H1 } from "./h1-styled";
+import { H2 } from "./h2-styled";
 import { Color } from "../constants";
 
 
@@ -66,7 +66,7 @@ export default class AddUserForm extends React.Component<
         }}
         noValidate
       >
-        <StyledH2 color = {Color.Black}>Adicionar Novo Usuário</StyledH2>
+        <H2 color = {Color.Black}>Adicionar Novo Usuário</H2>
         <Field
           canShowError={this.state.submitted}
           onValueChange={this.handleSetName}

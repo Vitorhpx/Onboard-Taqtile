@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { UserCard } from "./user-card"
-import { Color, Constrains } from "../constants"
+import { Color } from "../constants"
 
-export const StyledP = styled.p`
+export const P = styled.p`
   color: ${Color.GrayDark};
   margin: 0;
 `

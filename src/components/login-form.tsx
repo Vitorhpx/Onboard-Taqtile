@@ -5,7 +5,7 @@ import { Button } from "../components/styled-button"
 import { StyledForm } from "../components/form-styled"
 import { ErrorMessage } from "./error-message-styled"
 import { LoadingMessage } from "./loading-message-styled"
-import { StyledH2 } from "./h2-styled";
+import { H2 } from "./h2-styled";
 import { Color } from "../constants";
 
 interface LoginFormState {
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
         }}
         noValidate
       >
-        <StyledH2 color = {Color.Black}>Bem vindo à Taqtile</StyledH2>
+        <H2 color = {Color.Black}>Bem vindo à Taqtile</H2>
         <Field
           canShowError={this.state.submitted && !this.state.isEmailValid}
           onValueChange={this.handleSetEmail}

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { UserCard } from './user-card';
 import { Color, Constrains } from '../constants';
 
-export const StyledUserCard = styled(UserCard)`
+export const StyledUserCard = styled.div`
   background-color:${Color.White};
   border:${Color.Black};
   max-width:${Constrains.UserCardWidth};

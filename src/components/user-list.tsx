@@ -2,7 +2,6 @@ import { Users } from "../containers/user-list-container"
 import React from "react"
 import { navigate } from "gatsby";
 import { StyledUserCard } from "./user-card-styled";
-import { UserCard } from "./user-card";
 
 interface UserListProps {
   users: Users
