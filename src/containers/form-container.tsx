@@ -1,5 +1,5 @@
 import * as React from "react"
-import  gql from "graphql-tag"
+import gql from "graphql-tag"
 import { Mutation, MutationResult } from "react-apollo"
 import { navigate } from "gatsby"
 import AddUserForm from "../components/add-user-form"

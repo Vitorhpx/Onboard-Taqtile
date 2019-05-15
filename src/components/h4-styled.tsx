@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Color, FontSizes } from "../constants";
+import { Color } from "../constants"
 
 export const H4 = styled.h4`
   color: ${Color.Black};

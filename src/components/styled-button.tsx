@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components'
-import {Color, Fonts} from '../constants'
+import styled, { css } from "styled-components"
+import { Color, Fonts } from "../constants"
 
 export const Button = styled.button`
   background-color: ${Color.Primary};
@@ -10,16 +10,16 @@ export const Button = styled.button`
   height: 44px;
   padding: 0.25em 1em;
   font-family: ${Fonts.SanSerif};
-  min-width:150px;
-  max-width:200px;
+  min-width: 150px;
+  max-width: 200px;
 
   ${props =>
     props.CTA &&
     css`
-    background-color: ${Color.CallToAction}
+      background-color: ${Color.CallToAction};
     `};
 
-  :disabled{
+  :disabled {
     background-color: ${Color.GrayLight};
   }
 `

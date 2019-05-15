@@ -1,8 +1,9 @@
 import * as React from "react"
-import { P } from "./p-styled";
-import { StyledUserCardFullInfo } from "./user-card-full-info-styled";
+import { P } from "./p-styled"
+import { StyledUserCardFullInfo } from "./user-card-full-info-styled"
 
 interface UserCardFullInfoProps {
+<<<<<<< HEAD
   id: string,
   name: string,
   cpf: string,
@@ -10,10 +11,20 @@ interface UserCardFullInfoProps {
   email: string,
   role: string,
   className: string,
+=======
+  id: string
+  name: string
+  cpf: string
+  birthDate: string
+  email: string
+  role: string
+>>>>>>> features/styling-update
 }
 
-export class UserCardFullInfo extends React.Component<UserCardFullInfoProps, any> {
-
+export class UserCardFullInfo extends React.Component<
+  UserCardFullInfoProps,
+  any
+> {
   render() {
     return (
 <<<<<<< HEAD
@@ -27,12 +38,26 @@ export class UserCardFullInfo extends React.Component<UserCardFullInfoProps, any
       </div>
 =======
       <StyledUserCardFullInfo id={this.props.id}>
-        <P><b>Id:</b> {this.props.id}</P>
-        <P><b>Nome:</b> {this.props.name}</P>
-        <P><b>Email:</b> {this.props.email}</P>
-        <P><b>CPF:</b> {this.props.cpf}</P>
-        <P><b>Data de Nascimento: </b>{this.props.birthDate}</P>
-        <P><b>Função: </b>{this.props.role}</P>
+        <P>
+          <b>Id:</b> {this.props.id}
+        </P>
+        <P>
+          <b>Nome:</b> {this.props.name}
+        </P>
+        <P>
+          <b>Email:</b> {this.props.email}
+        </P>
+        <P>
+          <b>CPF:</b> {this.props.cpf}
+        </P>
+        <P>
+          <b>Data de Nascimento: </b>
+          {this.props.birthDate}
+        </P>
+        <P>
+          <b>Função: </b>
+          {this.props.role}
+        </P>
       </StyledUserCardFullInfo>
 >>>>>>> Removed Classnames
     )

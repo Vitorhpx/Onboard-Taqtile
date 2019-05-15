@@ -1,8 +1,7 @@
 import styled from "styled-components"
-import Header from "./header";
-import { Color } from "../constants";
 
 export const HeaderWrapper = styled.div`
+<<<<<<< HEAD
   padding-bottom:2em;
 <<<<<<< HEAD
   padding-left:2em;
@@ -16,4 +15,8 @@ export const HeaderWrapper = styled.div`
 =======
   padding-left:1em;
 >>>>>>> Fonts extraction
+=======
+  padding-bottom: 2em;
+  padding-left: 1em;
+>>>>>>> features/styling-update
 `

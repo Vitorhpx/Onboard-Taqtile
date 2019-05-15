@@ -1,7 +1,7 @@
 import { Users } from "../containers/user-list-container"
 import React from "react"
-import { navigate } from "gatsby";
-import { StyledUserCard } from "./user-card-styled";
+import { navigate } from "gatsby"
+import { StyledUserCard } from "./user-card-styled"
 
 interface UserListProps {
   users: Users
@@ -23,6 +23,6 @@ export class UserList extends React.Component<UserListProps, any> {
     })
   }
   handleCheck = (id: string) => {
-    navigate("/UserDetailsPage/", {state:{ id }})
+    navigate("/UserDetailsPage/", { state: { id } })
   }
 }

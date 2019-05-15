@@ -1,5 +1,5 @@
-import styled,{css} from 'styled-components'
-import { Color } from '../constants';
+import styled, { css } from "styled-components"
+import { Color } from "../constants"
 
 export const StyledInput = styled.input`
   text-align: center;
@@ -12,6 +12,6 @@ export const StyledInput = styled.input`
   ${props =>
     props.error &&
     css`
-    background-color: ${Color.Error};
+      background-color: ${Color.Error};
     `};
 `

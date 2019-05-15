@@ -5,8 +5,8 @@ import { Button } from "../components/styled-button"
 import { StyledForm } from "../components/form-styled"
 import { ErrorMessage } from "./error-message-styled"
 import { LoadingMessage } from "./loading-message-styled"
-import { H2 } from "./h2-styled";
-import { Color } from "../constants";
+import { H2 } from "./h2-styled"
+import { Color } from "../constants"
 
 interface LoginFormState {
   submitted: boolean
@@ -18,11 +18,14 @@ interface LoginFormState {
 }
 
 interface LoginFormProps {
-  mutation: Function,
-  result: any,
+  mutation: Function
+  result: any
 }
 
-export default class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
+export default class LoginForm extends React.Component<
+  LoginFormProps,
+  LoginFormState
+> {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,7 +47,7 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
         }}
         noValidate
       >
-        <H2 color = {Color.Black}>Bem vindo à Taqtile</H2>
+        <H2 color={Color.Black}>Bem vindo à Taqtile</H2>
         <Field
           canShowError={this.state.submitted && !this.state.isEmailValid}
           onValueChange={this.handleSetEmail}
@@ -67,13 +70,19 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
           errorMessage="Deve conter pelo menos 7 caracteres, com 1 alfanumérico e 1 dígito"
           type="password"
         />
-        <Button type="submit" className="LoginButton" disabled={this.props.result.loading}>
+        <Button
+          type="submit"
+          className="LoginButton"
+          disabled={this.props.result.loading}
+        >
           Fazer Login
         </Button>
         {this.props.result.error && (
           <ErrorMessage error>{this.props.result.error.message}</ErrorMessage>
         )}
-        {this.props.result.loading && <LoadingMessage loading>Loading...</LoadingMessage>}
+        {this.props.result.loading && (
+          <LoadingMessage loading>Loading...</LoadingMessage>
+        )}
       </StyledForm>
     )
   }
@@ -84,7 +93,9 @@ export default class LoginForm extends React.Component<LoginFormProps, LoginForm
     })
     console.log(this.state)
     if (this.state.isEmailValid && this.state.isPasswordValid) {
-      await mutateFunction({variables:{email: this.state.email, password: this.state.password }});
+      await mutateFunction({
+        variables: { email: this.state.email, password: this.state.password },
+      })
     }
   }
 
