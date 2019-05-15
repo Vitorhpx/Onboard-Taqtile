@@ -2,14 +2,9 @@ import * as React from "react"
 import gql from "graphql-tag"
 import { Query, QueryResult } from "react-apollo"
 import { Layout } from "../layout"
-<<<<<<< HEAD
-import { StyledUserCardFullInfo } from "../components/user-card-full-info-styled";
-import { Link } from "gatsby";
-import { Button } from "../components/styled-button";
-
-=======
 import { StyledUserCardFullInfo } from "../components/user-card-full-info-styled"
->>>>>>> features/styling-update
+import { Link } from "gatsby"
+import { Button } from "../components/styled-button"
 
 const GETUSER = gql`
   query getUser($id: Int!) {
@@ -55,17 +50,6 @@ export default class UserDetailsPage extends React.Component<any, any> {
             const user = response.data.User
             if (response.loading) return <p className="Loading">Loading...</p>
             if (response.error) return `Error! ${response.error.message}`
-<<<<<<< HEAD
-            return <StyledUserCardFullInfo
-            email={user.email}
-            name={user.name}
-            birthDate={user.birthDate}
-            role={user.role}
-            id={user.id}
-            cpf={user.cpf}
-            className={"UserCardFullInfo"}
-          />
-=======
             return (
               <StyledUserCardFullInfo
                 email={user.email}
@@ -76,13 +60,11 @@ export default class UserDetailsPage extends React.Component<any, any> {
                 cpf={user.cpf}
               />
             )
->>>>>>> features/styling-update
           }}
         </Query>
         <Link to={"/UserListPage"}>
-            <Button className="BackButton"> Back
-            </Button>
-          </Link>
+          <Button className="BackButton"> Back</Button>
+        </Link>
       </Layout>
     )
   }
