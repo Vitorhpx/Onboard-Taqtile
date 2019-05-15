@@ -5,6 +5,8 @@ import { Layout } from "../layout"
 import { StyledUserCardFullInfo } from "../components/user-card-full-info-styled"
 import { Link } from "gatsby"
 import { Button } from "../components/styled-button"
+import { UserCardFullInfo } from "../components/user-card-full-info"
+import { StyledUserList } from "../components/user-list-styled"
 
 const GETUSER = gql`
   query getUser($id: Int!) {
@@ -45,26 +47,31 @@ export default class UserDetailsPage extends React.Component<any, any> {
     }
     return (
       <Layout>
-        <Query query={GETUSER} variables={{ id: this.props.location.state.id }}>
-          {(response: QueryResult<Response>) => {
-            const user = response.data.User
-            if (response.loading) return <p className="Loading">Loading...</p>
-            if (response.error) return `Error! ${response.error.message}`
-            return (
-              <StyledUserCardFullInfo
-                email={user.email}
-                name={user.name}
-                birthDate={user.birthDate}
-                role={user.role}
-                id={user.id}
-                cpf={user.cpf}
-              />
-            )
-          }}
-        </Query>
-        <Link to={"/UserListPage"}>
-          <Button className="BackButton"> Back</Button>
-        </Link>
+        <StyledUserList>
+          <Query
+            query={GETUSER}
+            variables={{ id: this.props.location.state.id }}
+          >
+            {(response: QueryResult<Response>) => {
+              const user = response.data.User
+              if (response.loading) return <p className="Loading">Loading...</p>
+              if (response.error) return `Error! ${response.error.message}`
+              return (
+                <UserCardFullInfo
+                  email={user.email}
+                  name={user.name}
+                  birthDate={user.birthDate}
+                  role={user.role}
+                  id={user.id}
+                  cpf={user.cpf}
+                />
+              )
+            }}
+          </Query>
+          <Link to={"/UserListPage"}>
+            <Button className="BackButton"> Back</Button>
+          </Link>
+        </StyledUserList>
       </Layout>
     )
   }

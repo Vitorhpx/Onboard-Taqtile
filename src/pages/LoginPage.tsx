@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Layout } from "../layout"
 import LoginFormContainer from "../containers/login-form-container"
+import LoginForm from "../components/login-form"
 
 interface LoginPageState {
   submitted: boolean
@@ -28,7 +29,11 @@ export default class LoginPage extends React.Component<any, LoginPageState> {
     const { submitted } = this.state
     return (
       <Layout>
-        <LoginFormContainer />
+        <LoginFormContainer
+          render={(onSubmit, result) => (
+            <LoginForm submitCallback={onSubmit} result={result} />
+          )}
+        />
       </Layout>
     )
   }
