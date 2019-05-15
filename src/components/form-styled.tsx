@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components'
-import { Color } from '../constants';
+import styled, { css } from "styled-components"
+import { Color } from "../constants"
 
 export const StyledForm = styled.form`
   float: center;
@@ -11,16 +11,10 @@ export const StyledForm = styled.form`
   text-align: center;
   max-width: 400px;
   padding: 2em;
-
-
-
   font-size: 12px;
-  font-weight:bold;
+  font-weight: bold;
   color: ${Color.Gray};
-  margin-bottom:12px;
+  margin-bottom: 12px;
   padding: 0.25em 1em;
-  ${props =>
-    props.error &&
-    css`
-    `};
+  ${props => props.error && css``};
 `

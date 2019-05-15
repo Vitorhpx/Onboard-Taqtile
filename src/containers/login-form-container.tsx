@@ -1,10 +1,9 @@
 import * as React from "react"
-import  gql from "graphql-tag"
+import gql from "graphql-tag"
 import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
 import { navigate } from "gatsby"
-import LoginForm from "../components/login-form";
-
+import LoginForm from "../components/login-form"
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -17,14 +16,14 @@ const LOGIN_MUTATION = gql`
 export default class LoginFormContainer extends React.Component<any, any> {
   render() {
     return (
-        <Mutation
-          mutation={LOGIN_MUTATION}
-          onCompleted={data => this.handleCompleted(data)}
-        >
-          {(mutation, result: MutationResult) => (
-            <LoginForm mutation={mutation} result={result}></LoginForm>
-          )}
-        </Mutation>
+      <Mutation
+        mutation={LOGIN_MUTATION}
+        onCompleted={data => this.handleCompleted(data)}
+      >
+        {(mutation, result: MutationResult) => (
+          <LoginForm mutation={mutation} result={result} />
+        )}
+      </Mutation>
     )
   }
 

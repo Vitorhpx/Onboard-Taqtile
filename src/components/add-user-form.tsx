@@ -5,10 +5,9 @@ import { Validator } from "../utils/validator"
 import { Button } from "../components/styled-button"
 import { ErrorMessage } from "./error-message-styled"
 import { StyledForm } from "../components/form-styled"
-import { StyledH1 } from "./h1-styled";
-import { StyledH2 } from "./h2-styled";
-import { Color } from "../constants";
-
+import { H1 } from "./h1-styled"
+import { H2 } from "./h2-styled"
+import { Color } from "../constants"
 
 interface AddUserFormState {
   submitted: boolean
@@ -27,9 +26,9 @@ interface AddUserFormState {
   isRoleValid: boolean
 }
 
-interface AddUserFormProps{
-  mutation: Function,
-  result: any,
+interface AddUserFormProps {
+  mutation: Function
+  result: any
 }
 
 export default class AddUserForm extends React.Component<
@@ -66,7 +65,7 @@ export default class AddUserForm extends React.Component<
         }}
         noValidate
       >
-        <StyledH2 color = {Color.Black}>Adicionar Novo Usuário</StyledH2>
+        <H2 color={Color.Black}>Adicionar Novo Usuário</H2>
         <Field
           canShowError={this.state.submitted}
           onValueChange={this.handleSetName}
@@ -130,7 +129,7 @@ export default class AddUserForm extends React.Component<
           text="Função"
           placeholder="user"
           validation={Validator.isRole}
-          errorMessage="Função Inválida, deve ser 'user' ou 'admin"
+          errorMessage='Função Inválida, deve ser "user" ou "admin"'
           type="text"
         />
         <Button type="submit">Criar Usuário</Button>
@@ -153,16 +152,18 @@ export default class AddUserForm extends React.Component<
       this.state.isRoleValid &&
       this.state.isNameValid
     if (isFormValid) {
-      await mutateFunction({variables:{
-        data: {
-          name: this.state.name,
-          email: this.state.email,
-          cpf: this.state.cpf,
-          birthDate: this.state.birthDate,
-          password: this.state.password,
-          role: this.state.role,
+      await mutateFunction({
+        variables: {
+          data: {
+            name: this.state.name,
+            email: this.state.email,
+            cpf: this.state.cpf,
+            birthDate: this.state.birthDate,
+            password: this.state.password,
+            role: this.state.role,
+          },
         },
-      }});
+      })
     }
   }
 

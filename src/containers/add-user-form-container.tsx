@@ -1,5 +1,5 @@
 import * as React from "react"
-import gql  from "graphql-tag"
+import gql from "graphql-tag"
 import { Mutation, MutationResult } from "react-apollo"
 import { navigate } from "gatsby"
 import AddUserForm from "../components/add-user-form"
@@ -25,7 +25,7 @@ export default class AddUserFormContainer extends React.Component<any, any> {
         mutation={CREATEUSER}
         onCompleted={() => this.handleCompleted()}
       >
-        {(mutation, result: MutationResult) =>  (
+        {(mutation, result: MutationResult) => (
           <AddUserForm mutation={mutation} result={result} />
         )}
       </Mutation>

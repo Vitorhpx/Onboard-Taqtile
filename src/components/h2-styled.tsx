@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components"
+import { Fonts, FontSizes } from "../constants"
 
-export const StyledH2 = styled.h2`
-  font-size: 24px;
-  font-weight:bold;
-  font-family: 'Ubuntu', sans-serif;
+export const H2 = styled.h2`
+  font-size: ${FontSizes.Large};
+  font-weight: bold;
+  font-family: ${Fonts.SanSerif};
   color: ${props => props.color};
-  margin-bottom:1em;
+  margin-bottom: 1em;
 `

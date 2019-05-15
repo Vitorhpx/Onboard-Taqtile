@@ -1,19 +1,16 @@
-import * as React from 'react';
-import { ApolloProvider } from 'react-apollo';
-import { client } from '../apollo/apollo-client';
-import { StyledHeader } from '../components/header-styled';
+import * as React from "react"
 import "./global.css"
-import { StyledFooter } from '../components/footer-styled';
+import Header from "../components/header"
+import Footer from "../components/footer"
 
 export class Layout extends React.Component {
-    render(){
-        return(
-          <div className="site">
-            <StyledHeader>User List Gatsby</StyledHeader>
-            <div className="site-content">{this.props.children}</div>
-            <StyledFooter></StyledFooter>
-          </div>
-        );
-    };
-};
-
+  render() {
+    return (
+      <div className="site">
+        <Header>User List Gatsby</Header>
+        <div className="site-content">{this.props.children}</div>
+        <Footer />
+      </div>
+    )
+  }
+}
