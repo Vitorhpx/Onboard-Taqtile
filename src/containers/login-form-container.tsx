@@ -4,6 +4,7 @@ import { Mutation, MutationResult } from "react-apollo"
 import { AUTH_TOKEN } from "../constants"
 import { navigate } from "gatsby"
 import LoginForm from "../components/login-form"
+import { MutationOptions } from "apollo-client"
 
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -12,6 +13,7 @@ const LOGIN_MUTATION = gql`
     }
   }
 `
+interface LoginFormContainerProps {}
 
 export default class LoginFormContainer extends React.Component<any, any> {
   render() {
@@ -20,11 +22,22 @@ export default class LoginFormContainer extends React.Component<any, any> {
         mutation={LOGIN_MUTATION}
         onCompleted={data => this.handleCompleted(data)}
       >
-        {(mutation, result: MutationResult) => (
-          <LoginForm mutation={mutation} result={result} />
-        )}
+        {(
+          mutate: (options?: MutationOptions) => Promise<any>,
+          result: MutationResult
+        ) => {
+          return this.props.render(this.submitCallback(mutate), result)
+        }}
       </Mutation>
     )
+  }
+
+  submitCallback = (mutate: (variables) => Promise<any>) => {
+    return async (email: string, password: string) => {
+      await mutate({
+        variables: { email: email, password: password },
+      })
+    }
   }
 
   handleCompleted = data => {

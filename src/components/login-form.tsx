@@ -7,6 +7,7 @@ import { ErrorMessage } from "./error-message-styled"
 import { LoadingMessage } from "./loading-message-styled"
 import { H2 } from "./h2-styled"
 import { Color } from "../constants"
+import { MutationResult } from "react-apollo"
 
 interface LoginFormState {
   submitted: boolean
@@ -18,8 +19,8 @@ interface LoginFormState {
 }
 
 interface LoginFormProps {
-  mutation: Function
-  result: any
+  submitCallback: (email: string, password: string) => void
+  result: MutationResult
 }
 
 export default class LoginForm extends React.Component<
@@ -43,7 +44,7 @@ export default class LoginForm extends React.Component<
       <StyledForm
         method="post"
         onSubmit={event => {
-          this.handleSubmit(this.props.mutation, event)
+          this.handleSubmit(event)
         }}
         noValidate
       >
@@ -86,16 +87,13 @@ export default class LoginForm extends React.Component<
       </StyledForm>
     )
   }
-  handleSubmit = async (mutateFunction: Function, event) => {
+  handleSubmit = event => {
     event.preventDefault()
     this.setState({
       submitted: true,
     })
-    console.log(this.state)
     if (this.state.isEmailValid && this.state.isPasswordValid) {
-      await mutateFunction({
-        variables: { email: this.state.email, password: this.state.password },
-      })
+      this.props.submitCallback(this.state.email, this.state.password)
     }
   }
 
